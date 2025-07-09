@@ -2,6 +2,9 @@
 export PAGER="/usr/bin/less"
 export LESS="--raw-control-chars --quit-if-one-screen"
 
+# use vulkan renderer for wlroots
+export WLR_RENDERER="vulkan"
+
 # use the gcr ssh agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 
