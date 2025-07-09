@@ -16,6 +16,8 @@ input type:pointer {
   accel_profile "flat"
 }
 
+focus_follows_mouse no
+
 # Start a terminal
 bindsym $mod+Return exec $term
 
