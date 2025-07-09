@@ -1,0 +1,12 @@
+[user]
+	name = Ossian Winter
+	email = ossian@winter.vg
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgSign = true
+
+[tag]
+	gpgSign = true
