@@ -8,6 +8,8 @@ set $right Right
 set $term foot
 set $menu wmenu-run
 
+exec gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
 input type:keyboard {
   xkb_layout "se"
 }
