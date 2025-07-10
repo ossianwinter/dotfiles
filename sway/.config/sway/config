@@ -127,9 +127,9 @@ bindsym $mod+r mode "resize"
 # Special key to take a screenshot with grim
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
-exec                           wpctl set-mute @DEFAULT_SOURCE@ 1
-bindsym           section exec wpctl set-mute @DEFAULT_SOURCE@ 0
-bindsym --release section exec wpctl set-mute @DEFAULT_SOURCE@ 1
+exec                           --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ 1
+bindsym           section exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ 0
+bindsym --release section exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ 1
 
 #
 # Status Bar:
