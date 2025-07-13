@@ -1,6 +1,7 @@
 #!/bin/sh
 
 stow --restow --target=$HOME electron
+stow --restow --target=$HOME emacs
 stow --restow --target=$HOME env
 stow --restow --target=$HOME fontconfig
 stow --restow --target=$HOME foot
