@@ -10,6 +10,17 @@ set $menu wmenu-run
 
 exec gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 
+assign [app_id="firefox"] 1
+assign [class="jetbrains-idea-ce"] 2
+assign [app_id="discord"] 9
+assign [app_id="Slack"] 9
+assign [class="Spotify"] 10
+
+exec firefox
+exec discord
+exec slack
+exec spotify
+
 input type:keyboard {
   xkb_layout "se"
 }
