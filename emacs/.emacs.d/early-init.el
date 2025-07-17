@@ -3,7 +3,7 @@
 
 (add-hook 'emacs-startup-hook
 	  (lambda ()
-	    (setq gc-cons-threshold 800000
+	    (setq gc-cons-threshold (* 100 1024 1024)
 		  gc-cons-percentage 0.1)))
 
 (setq custom-file null-device
