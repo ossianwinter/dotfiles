@@ -16,8 +16,12 @@
   (enable-recursive-minibuffers t)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
+  (display-line-numbers-type 'relative)
   :init
-  (load-theme 'modus-vivendi))
+  (load-theme 'modus-vivendi)
+  :hook
+  (prog-mode . display-line-numbers-mode)
+  (text-mode . display-line-numbers-mode))
 
 ;; savehist
 (use-package savehist
