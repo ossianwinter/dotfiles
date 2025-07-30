@@ -1,0 +1,16 @@
+[user]
+	name = Ossian Winter
+	email = ossian@winter.vg
+	signingkey = 08F913B4EF8655D43013C4EC0494BE82DDE3A17A
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgSign = true
+
+[tag]
+	gpgSign = true
+
+[pull]
+	rebase = true

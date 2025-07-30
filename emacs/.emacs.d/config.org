@@ -1,0 +1,322 @@
+* Emacs
+** User identification
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Ossian Winter")
+  (setq user-mail-address "ossian@winter.vg")
+#+END_SRC
+
+** Interface
+*** Line & column numbers
+Always display line and column number in modeline,
+sometimes (prog-mode) display line number in the buffer.
+#+BEGIN_SRC emacs-lisp
+  (line-number-mode t)
+  (column-number-mode t)
+
+  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+#+END_SRC
+
+*** Disable blinking cursor
+#+BEGIN_SRC emacs-lisp
+  (blink-cursor-mode -1)
+#+END_SRC
+
+*** Highlight trailing whitespace
+Always highlight trailing whitespace with a red block.
+#+BEGIN_SRC emacs-lisp
+  (setq show-trailing-whitespace t)
+#+END_SRC
+
+** Files and I/O
+*** Default to UTF-8
+#+BEGIN_SRC emacs-lisp
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+#+END_SRC
+
+*** Require files to end with newline
+Automatically add a newline at the end of the file.
+#+BEGIN_SRC emacs-lisp
+  (setq require-final-newline t)
+#+END_SRC
+
+*** Disable backup files
+Everything important is versioned with Git.
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-files nil)
+#+END_SRC
+
+*** Increase bytes read from child process
+Default value of 4096 bytes is way too conservative.
+#+BEGIN_SRC emacs-lisp
+  (setq read-process-output-max (* 1024 1024 2)) ; 2 MiB
+#+END_SRC
+
+*** Automatically follow symlinks
+Automatically follow link and visit real file instead.
+#+BEGIN_SRC emacs-lisp
+  (setq vc-follow-symlinks t)
+  (setq find-file-visit-truename t)
+#+END_SRC
+
+** Built-in completion
+*** Default completion styles
+The built-in basic completion style is good enough as the single default completion style.
+#+BEGIN_SRC emacs-lisp
+  (setq completion-styles '(basic))
+#+END_SRC
+
+*** Automatically show *Completions* buffer
+Automatically show *Completions* buffer after second failed completion attempt.
+#+BEGIN_SRC emacs-lisp
+  (setq completion-auto-help 'lazy)
+#+END_SRC
+
+*** Extended command predicate
+Hide commands that do not work in the current mode.
+#+BEGIN_SRC emacs-lisp
+  (setq read-extended-command-predicate #'command-completion-default-include-p)
+#+END_SRC
+
+*** TAB indents then completes
+Indenting with TAB first tries to indent, then tries to complete.
+#+BEGIN_SRC emacs-lisp
+  (setq tab-always-indent 'complete)
+#+END_SRC
+
+** Minibuffers
+*** Recursive minibuffers
+Allow opening new minibuffers from inside current minibuffers.
+#+BEGIN_SRC emacs-lisp
+  (setq enable-recursive-minibuffers t)
+#+END_SRC
+
+*** Disable garbage collection in minibuffers
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'minibuffer-setup-hook #'ossian/defer-gc)
+  (add-hook 'minibuffer-exit-hook  #'ossian/resume-gc-soon)
+#+END_SRC
+
+* Interface
+** Fontaine
+#+BEGIN_SRC emacs-lisp
+  (use-package fontaine
+    :straight (:source gnu-elpa-mirror)
+
+    :init
+    (setq fontaine-presets
+  	'((small
+  	   :default-family "JetBrains Mono"
+  	   :default-height 120)
+  	  (regular
+  	   :inherit small
+  	   :default-height 140)
+  	  (large
+  	   :inherit regular
+  	   :default-height 160)
+  	  (presentation
+  	   :inherit large
+  	   :default-height 180)))
+
+    :config
+    (fontaine-mode t))
+#+END_SRC
+
+** Ef themes
+#+BEGIN_SRC emacs-lisp
+  (use-package ef-themes
+    :straight (:source gnu-elpa-mirror)
+
+    :init
+    (setq ef-themes-mixed-fonts nil)
+    (setq ef-themes-variable-pitch-ui nil)
+
+    (setq ef-themes-headings
+  	'((1 bold 1.3)
+  	  (2 bold 1.2)
+  	  (3 bold 1.1)
+  	  (4 bold 1.0)
+  	  (t t)))
+
+    (setq ef-themes-to-toggle '(ef-elea-dark ef-elea-light))
+
+    :config
+    (mapc #'disable-theme custom-enabled-themes)
+    (ef-themes-select 'ef-elea-dark))
+#+END_SRC
+
+** Doom modeline
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+    :straight (:source melpa)
+
+    :config
+    (doom-modeline-mode t))
+#+END_SRC
+
+* Version control
+** Magit
+Hands down the best interface for Git.
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :straight (:source melpa)
+
+    :commands (magit magit-status)
+
+    :init
+    (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+#+END_SRC
+
+* Navigation
+** Consult
+Search and navigate based on completing-read.
+#+BEGIN_SRC emacs-lisp
+  (use-package consult
+    :straight (:source melpa)
+
+    :bind (;; global map
+  	 ("M-y" . consult-yank-pop)
+
+  	 ;; ctl-x-map
+  	 ("C-x   b" . consult-buffer)
+  	 ("C-x C-b" . consult-buffer)
+  	 ("C-x 4 b" . consult-buffer-other-window)
+  	 ("C-x 5 b" . consult-buffer-other-frame)
+  	 ("C-x t b" . consult-buffer-other-tab)
+  	 ("C-x p b" . consult-project-buffer)
+  	 ("C-x r b" . consult-bookmark)
+
+  	 ;; search-map
+  	 ("M-s   d" . consult-fd)
+  	 ("M-s M-d" . consult-fd)
+  	 ("M-s   g" . consult-ripgrep)
+  	 ("M-s M-g" . consult-ripgrep)
+  	 ("M-s   l" . consult-line)
+  	 ("M-s M-l" . consult-line)
+  	 ("M-s   L" . consult-line-multi)
+  	 ("M-s M-L" . consult-line-multi))
+
+    :init
+    (setq xref-show-xrefs-function       #'consult-xref)
+    (setq xref-show-definitions-function #'consult-xref))
+#+END_SRC
+
+* Completion
+** Completion providers
+*** Orderless
+Regexp based fuzzy completion style, matches any amount of regexps, in any order.
+#+BEGIN_SRC emacs-lisp
+  (use-package orderless
+    :straight (:source melpa)
+
+    :init
+    (add-to-list 'completion-styles #'orderless))
+#+END_SRC
+
+*** Cape
+Awesome capf extensions.
+#+BEGIN_SRC emacs-lisp
+  (use-package cape
+    :straight (:source melpa)
+
+    :init
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+#+END_SRC
+
+*** Eglot
+Built-in client for the language server protocol.
+#+BEGIN_SRC emacs-lisp
+  (use-package eglot
+    :straight (:type built-in)
+
+    :commands (eglot-ensure)
+
+    :init
+    (fset #'jsonrpc--log-event #'ignore)) ; Reduce jsonrpc logging
+
+  (use-package eglot-booster
+    :straight (:type git :host github :repo "jdtsmith/eglot-booster")
+    :after eglot
+
+    :config
+    (eglot-booster-mode))
+#+END_SRC
+
+** Minibuffer completion
+*** Vertico
+Vertical interactive completion minibuffer UI.
+#+BEGIN_SRC emacs-lisp
+  (use-package vertico
+    :straight (:source melpa)
+    :demand t
+
+    :config
+    (vertico-mode t))
+#+END_SRC
+
+*** Marginalia
+Adds margin annotations to minibuffer completions.
+#+BEGIN_SRC emacs-lisp
+  (use-package marginalia
+    :straight (:source melpa)
+    :demand t
+
+    :config
+    (marginalia-mode t))
+#+END_SRC
+
+** In-buffer completion
+*** Corfu
+In-buffer completion popup.
+#+BEGIN_SRC emacs-lisp
+  (use-package corfu
+    :straight (:source melpa)
+
+    :hook
+    (prog-mode . corfu-mode)
+
+    :init
+    (setq corfu-auto t))
+#+END_SRC
+
+*** Kind icons
+Adds margin icons to in-buffer completions.
+#+BEGIN_SRC emacs-lisp
+  (use-package kind-icon
+    :straight (:source gnu-elpa-mirror)
+
+    :hook
+    (corfu-mode . (lambda ()
+  		  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))))
+#+END_SRC
+
+** Act completion
+*** Embark
+Choose a command to run based on what is near point, in either a minibuffer or session completion.
+#+BEGIN_SRC emacs-lisp
+  (use-package embark
+    :straight (:source melpa)
+
+    :bind (("C-." . embark-act)
+  	 ("C-;" . embark-dwim)))
+
+  (use-package embark-consult
+    :straight (:source melpa)
+    :after consult
+
+    :hook
+    (embark-collect-mode . consult-preview-at-point-mode))
+#+END_SRC
+
+* Languages
+** Rust
+#+BEGIN_SRC emacs-lisp
+  (use-package rust-mode
+    :straight (:source melpa)
+
+    :hook
+    (rust-mode . eglot-ensure)
+
+    :init
+    (setq rust-mode-treesitter-derive t))
+#+END_SRC
