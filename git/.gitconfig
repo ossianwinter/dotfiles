@@ -1,0 +1,19 @@
+[user]
+	name = Ossian Winter
+	email = ossian@winter.vg
+	signingkey = B8C7A0FC44A21CDA!
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgSign = true
+
+[tag]
+	gpgSign = true
+
+[pull]
+	rebase = true
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
