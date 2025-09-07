@@ -5,7 +5,7 @@ SAVEHIST=0
 
 PROMPT='%3~ %# '
 
-alias ls='ls --almost-all --color=auto'
+alias ls='ls --color=auto'
 
 bindkey -e
 bindkey ';5C' emacs-forward-word
