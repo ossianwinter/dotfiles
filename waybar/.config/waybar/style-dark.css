@@ -10,7 +10,7 @@
 @define-color unfocused-text       #989898;
 @define-color unfocused-indicator  #c6daff;
 
-@define-color urgent-border     #646464;
+@define-color urgent-border     #ff5f59;
 @define-color urgent-background #000000;
-@define-color urgent-text       #989898;
-@define-color urgent-indicator  #c6daff;
+@define-color urgent-text       #ffffff;
+@define-color urgent-indicator  #ff5f59;
