@@ -6,7 +6,7 @@ set $left  Left
 set $right Right
 
 set $term wezterm
-set $menu wmenu-run
+set $menu ${HOME}/.config/sway/wmenu.sh
 
 input type:keyboard {
   xkb_layout se
