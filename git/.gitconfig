@@ -1,0 +1,20 @@
+[user]
+	name = Ossian Winter
+	email = ossian@winter.vg
+	signingKey = B8C7A0FC44A21CDA!
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgSign = true
+
+[tag]
+	gpgSign = true
+
+[pull]
+	rebase = true
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

@@ -1,0 +1,55 @@
+* {
+    font-family: FontAwesome, sans-serif;
+    font-size: 16px;
+}
+
+window#waybar {
+    background-color: @unfocused-background;
+    color:            @unfocused-text;
+}
+
+button {
+    border: none;
+    border-radius: 0px;
+    box-shadow: inset 0px 2px transparent;
+}
+
+button:hover {
+    box-shadow: inset 0px 2px @focused-indicator;
+}
+
+#workspaces button {
+    padding: 0px 4px;
+}
+
+#workspaces button.focused {
+    background-color:         @focused-background;
+    color:                    @focused-text;
+    box-shadow: inset 0px 2px @focused-indicator;
+}
+
+#workspaces button.urgent {
+    background-color:         @urgent-background;
+    color:                    @urgent-text;
+    box-shadow: inset 0px 2px @urgent-indicator;
+}
+
+#workspaces {
+    margin: 0px 4px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0px;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0px;
+}
+
+#wireplumber {
+    color: @focused-text;
+}
+
+#tray {
+    margin: 0px 4px;
+}

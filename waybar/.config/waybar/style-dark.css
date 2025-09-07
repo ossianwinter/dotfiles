@@ -1,0 +1,16 @@
+@import url("style.css");
+
+@define-color focused-border     #646464;
+@define-color focused-background #000000;
+@define-color focused-text       #ffffff;
+@define-color focused-indicator  #c6daff;
+
+@define-color unfocused-border     #646464;
+@define-color unfocused-background #000000;
+@define-color unfocused-text       #989898;
+@define-color unfocused-indicator  #c6daff;
+
+@define-color urgent-border     #646464;
+@define-color urgent-background #000000;
+@define-color urgent-text       #989898;
+@define-color urgent-indicator  #c6daff;

@@ -1,0 +1,33 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 24,
+
+  "modules-left": [
+    "sway/workspaces",
+  ],
+  "modules-center": [
+    "wireplumber",
+  ],
+  "modules-right": [
+    "tray",
+  ],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}",
+  },
+
+  "wireplumber": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": ["", "", ""],
+    "tooltip": false,
+  },
+
+  "tray": {
+    "icon-size": 24,
+    "spacing": 4,
+  },
+}
