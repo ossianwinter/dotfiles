@@ -4,7 +4,7 @@ cmd=$1
 propk=$2
 propv=$3
 
-con_id=$(swaymsg -t get_tree | jq -r '
+con_id=$(swaymsg -t get_tree | jq --raw-output '
 [ recurse(.nodes[]?, .floating_nodes[]?)
   | select(.type == "con", .type == "floating_con")
   | select('"${propk}"' == "'"${propv}"'")
