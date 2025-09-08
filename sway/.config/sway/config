@@ -1,3 +1,10 @@
+include /etc/sway/config.d/*.conf
+
+include config.d/*.conf
+include themes/darkman.conf
+
+exec_always systemctl --user start sway-session.target
+
 set $mod Mod4
 
 set $up    Up
@@ -10,12 +17,12 @@ set $editor   emacs
 set $menu     ${HOME}/.config/sway/wmenu.sh
 set $printscr grim -g "$(slurp)"
 
-set $eog      ${HOME}/.config/sway/exec_or_go.sh
-set $pwman    $eog bitwarden-desktop .window_properties.instance bitwarden
-set $browser  $eog firefox           .app_id                     firefox
-set $music    $eog spotify           .window_properties.instance spotify
-set $chat     $eog discord           .window_properties.instance discord
-set $workchat $eog slack             .window_properties.instance slack
+set $jump     ${HOME}/.config/sway/jump.sh
+set $pwman    $jump bitwarden-desktop .window_properties.instance bitwarden
+set $browser  $jump firefox           .app_id                     firefox
+set $music    $jump spotify           .window_properties.instance spotify
+set $chat     $jump discord           .window_properties.instance discord
+set $workchat $jump slack             .window_properties.instance slack
 
 focus_on_window_activation focus
 
@@ -80,10 +87,3 @@ bindsym $mod+v splitv
 
 bindsym $mod+f     fullscreen toggle
 bindsym $mod+space floating   toggle
-
-include /etc/sway/config.d/*.conf
-
-include config.d/*.conf
-include theme.conf
-
-exec_always systemctl --user start sway-session.target
