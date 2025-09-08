@@ -17,6 +17,8 @@ set $music    $eog spotify           .window_properties.instance spotify
 set $chat     $eog discord           .window_properties.instance discord
 set $workchat $eog slack             .window_properties.instance slack
 
+focus_on_window_activation focus
+
 input type:keyboard {
   xkb_layout se
 }
