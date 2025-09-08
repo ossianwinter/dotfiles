@@ -8,12 +8,14 @@ set $right Right
 set $term     wezterm
 set $editor   emacs
 set $menu     ${HOME}/.config/sway/wmenu.sh
-set $pwman    bitwarden-desktop
-set $browser  firefox
-set $music    spotify
-set $chat     discord
-set $workchat slack
 set $printscr grim -g "$(slurp)"
+
+set $eog      ${HOME}/.config/sway/exec_or_go.sh
+set $pwman    $eog bitwarden-desktop .window_properties.instance bitwarden
+set $browser  $eog firefox           .app_id                     firefox
+set $music    $eog spotify           .window_properties.instance spotify
+set $chat     $eog discord           .window_properties.instance discord
+set $workchat $eog slack             .window_properties.instance slack
 
 input type:keyboard {
   xkb_layout se
