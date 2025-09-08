@@ -5,10 +5,11 @@ propk=$2
 propv=$3
 
 con_id=$(swaymsg -t get_tree | jq -r '
-recurse(.nodes[]?, .floating_nodes[]?)
-| select(.type == "con")
-| select('"${propk}"' == "'"${propv}"'")
-| .id
+[ recurse(.nodes[]?, .floating_nodes[]?)
+  | select(.type == "con")
+  | select('"${propk}"' == "'"${propv}"'")
+] | max_by(.id)
+  | .id // empty
 ')
 
 if [ -z "${con_id}" ]; then
