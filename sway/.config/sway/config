@@ -13,6 +13,7 @@ set $browser  firefox
 set $music    spotify
 set $chat     discord
 set $workchat slack
+set $printscr grim -g "$(slurp)"
 
 input type:keyboard {
   xkb_layout se
@@ -32,6 +33,7 @@ bindsym $mod+b       exec $browser
 bindsym $mod+m       exec $music
 bindsym $mod+c       exec $chat
 bindsym $mod+Shift+c exec $workchat
+bindsym Print        exec $printscr
 
 bindsym $mod+w       kill
 bindsym $mod+Shift+w exit
