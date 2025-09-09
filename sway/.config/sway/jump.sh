@@ -1,19 +1,7 @@
 #!/usr/bin/env sh
 
 cmd=$1
-propk=$2
-propv=$3
+key=$2
+val=$3
 
-con_id=$(swaymsg -t get_tree | jq --raw-output '
-[ recurse(.nodes[]?, .floating_nodes[]?)
-  | select(.type == "con", .type == "floating_con")
-  | select('"${propk}"' == "'"${propv}"'")
-] | max_by(.id)
-  | .id // empty
-')
-
-if [ -z "${con_id}" ]; then
-  swaymsg exec "${cmd}"
-else
-  swaymsg "[con_id=${con_id}]" focus
-fi
+swaymsg '['"${key}"'='"${val}"'] focus' || exec ${cmd}
