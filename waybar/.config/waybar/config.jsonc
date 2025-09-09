@@ -21,7 +21,7 @@
 
   "wireplumber": {
     "format": "{volume}% {icon}",
-    "format-muted": "",
+    "format-muted": "",
     "format-icons": ["", "", ""],
     "tooltip": false,
   },
