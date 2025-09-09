@@ -18,11 +18,11 @@ set $menu     ${HOME}/.config/sway/wmenu.sh
 set $printscr grim -g "$(slurp)"
 
 set $jump     ${HOME}/.config/sway/jump.sh
-set $pwman    $jump bitwarden-desktop .window_properties.instance bitwarden
-set $browser  $jump firefox           .app_id                     firefox
-set $music    $jump spotify           .window_properties.instance spotify
-set $chat     $jump discord           .window_properties.instance discord
-set $workchat $jump slack             .window_properties.instance slack
+set $pwman    $jump bitwarden-desktop instance bitwarden
+set $browser  $jump firefox           app_id   firefox
+set $music    $jump spotify           instance spotify
+set $chat     $jump discord           instance discord
+set $workchat $jump slack             instance slack
 
 bindsym --no-repeat           section emit press   [instance=discord] section
 bindsym --no-repeat --release section emit release [instance=discord] section
@@ -42,12 +42,13 @@ floating_modifier $mod normal
 bindsym $mod+Return  exec $term
 bindsym $mod+e       exec $editor
 bindsym $mod+d       exec $menu
+bindsym Print        exec $printscr
+
 bindsym $mod+p       exec $pwman
 bindsym $mod+b       exec $browser
 bindsym $mod+m       exec $music
 bindsym $mod+c       exec $chat
 bindsym $mod+Shift+c exec $workchat
-bindsym Print        exec $printscr
 
 bindsym $mod+w       kill
 bindsym $mod+Shift+w exit
