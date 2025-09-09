@@ -24,6 +24,9 @@ set $music    $jump spotify           .window_properties.instance spotify
 set $chat     $jump discord           .window_properties.instance discord
 set $workchat $jump slack             .window_properties.instance slack
 
+bindsym --no-repeat           section emit press   [instance=discord] section
+bindsym --no-repeat --release section emit release [instance=discord] section
+
 focus_on_window_activation focus
 
 input type:keyboard {
