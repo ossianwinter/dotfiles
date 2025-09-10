@@ -16,7 +16,8 @@ set $menu     ${HOME}/.config/sway/wmenu.sh
 set $printscr grim -g "$(slurp)"
 
 set $jump     ${HOME}/.config/sway/jump.sh
-set $pwman    $jump bitwarden-desktop instance bitwarden
+set $pwman    $jump proton-pass       instance proton pass
+set $altpwman $jump bitwarden-desktop instance bitwarden
 set $browser  $jump firefox           app_id   firefox
 set $music    $jump spotify           instance spotify
 set $chat     $jump discord           instance discord
@@ -40,6 +41,7 @@ bindsym $mod+d       exec $menu
 bindsym Print        exec $printscr
 
 bindsym $mod+p       exec $pwman
+bindsym $mod+Shift+p exec $altpwman
 bindsym $mod+b       exec $browser
 bindsym $mod+m       exec $music
 bindsym $mod+c       exec $chat
