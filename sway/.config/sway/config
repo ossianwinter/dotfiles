@@ -3,8 +3,6 @@ include /etc/sway/config.d/*.conf
 include config.d/*.conf
 include themes/darkman.conf
 
-exec_always systemctl --user start sway-session.target
-
 set $mod Mod4
 
 set $up    Up
@@ -28,10 +26,6 @@ bindsym --no-repeat           section emit press   [instance=discord] section
 bindsym --no-repeat --release section emit release [instance=discord] section
 
 focus_on_window_activation focus
-
-input type:keyboard {
-  xkb_layout se
-}
 
 input type:pointer {
   accel_profile flat
