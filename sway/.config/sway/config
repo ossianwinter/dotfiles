@@ -26,6 +26,7 @@ bindsym --no-repeat           section emit press   [instance=discord] section
 bindsym --no-repeat --release section emit release [instance=discord] section
 
 focus_on_window_activation focus
+focus_follows_mouse        no
 
 input type:pointer {
   accel_profile flat
