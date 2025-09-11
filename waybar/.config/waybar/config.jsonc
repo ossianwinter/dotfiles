@@ -4,6 +4,8 @@
   "position": "top",
   "height": 24,
 
+  "fixed-center": true,
+
   "modules-left": [
     "sway/workspaces",
   ],
