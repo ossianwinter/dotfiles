@@ -47,6 +47,10 @@ bindsym $mod+m       exec $music
 bindsym $mod+c       exec $chat
 bindsym $mod+Shift+c exec $workchat
 
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+
 bindsym $mod+w       kill
 bindsym $mod+Shift+w exit
 bindsym $mod+Shift+r reload
