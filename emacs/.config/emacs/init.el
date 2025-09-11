@@ -115,5 +115,8 @@
 (use-package magit
   :straight t)
 
+(use-package orgit
+  :straight t)
+
 (provide 'init)
 ;;; init.el ends here
