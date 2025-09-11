@@ -9,6 +9,7 @@
   ],
   "modules-center": [
     "wireplumber",
+    "battery",
   ],
   "modules-right": [
     "tray",
@@ -24,6 +25,10 @@
     "format-muted": "",
     "format-icons": ["", "", ""],
     "tooltip": false,
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""]
   },
 
   "tray": {

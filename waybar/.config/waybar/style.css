@@ -48,6 +48,11 @@ button:hover {
 
 #wireplumber {
     color: @focused-text;
+    margin: 0px 12px;
+}
+
+#battery {
+    color: @focused-text;
 }
 
 #tray {
