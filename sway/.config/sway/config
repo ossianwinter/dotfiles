@@ -1,7 +1,7 @@
 include /etc/sway/config.d/*.conf
 
-include config.d/*.conf
 include themes/darkman.conf
+include config.d/*.conf
 
 set $mod Mod4
 
