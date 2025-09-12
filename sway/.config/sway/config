@@ -26,6 +26,9 @@ set $workchat $jump slack             instance slack
 bindsym --no-repeat           section emit press   [instance=discord] section
 bindsym --no-repeat --release section emit release [instance=discord] section
 
+# @Todo: How to do this per-device?
+output DP-2 scale 2
+
 focus_on_window_activation focus
 focus_follows_mouse        no
 
