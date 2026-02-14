@@ -1,0 +1,8 @@
+[user]
+	name = Ossian Winter
+	email = ossian@winter.vg
+	signingKey = /home/ossian/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
