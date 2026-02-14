@@ -1,5 +1,3 @@
-# .bash_profile
-
 export EDITOR=emacs
 export VISUAL=emacs
 
