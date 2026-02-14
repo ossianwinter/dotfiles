@@ -1,0 +1,2 @@
+export EDITOR="emacsclient --create-frame"
+export VISUAL="emacsclient --create-frame"
