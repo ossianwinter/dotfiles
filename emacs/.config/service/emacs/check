@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec emacsclient --eval nil -s "$XDG_RUNTIME_DIR/emacs/server" > /dev/null 2> /dev/null
