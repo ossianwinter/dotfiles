@@ -60,6 +60,17 @@
 (add-to-list 'package-archive-priorities '("nongnu" . 80) t)
 (add-to-list 'package-archive-priorities '("melpa"  . 70) t)
 
+;;; Theme:
+
+(require-theme 'modus-themes)
+(setq modus-vivendi-palette-overrides
+      '((bg-main "#222222")
+	(bg-dim  "#444444")
+	(bg-region "#005577")
+	(fg-main "#eeeeee")
+	(fg-dim  "#bbbbbb")))
+(modus-themes-load-theme 'modus-vivendi)
+
 ;;; Buffer management:
 
 (unless (package-installed-p 'shackle)
