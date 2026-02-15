@@ -1,3 +1,5 @@
+(setq custom-file (locate-user-emacs-file "custom.el"))
+
 (setq frame-inhibit-implied-resize t)
 
 (push '(menu-bar-lines . 0) default-frame-alist)
