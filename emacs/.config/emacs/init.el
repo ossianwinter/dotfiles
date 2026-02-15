@@ -70,6 +70,12 @@
   (package-install 'marginalia))
 (marginalia-mode +1)
 
+;;; File navigation:
+
+(let ((fd-args (if (listp consult-fd-args) consult-fd-args (list consult-fd-args))))
+  (unless (member "--hidden" fd-args)
+    (setq consult-fd-args (append fd-args '("--hidden")))))
+
 ;;; Code navigation:
 
 (setq xref-show-xrefs-function       #'consult-xref)
