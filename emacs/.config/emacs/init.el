@@ -4,6 +4,9 @@
 (set-language-environment "UTF-8")
 (setq default-input-method nil)    ; side-effect of `set-language-environment'
 
+;; Completion
+(setq read-extended-command-predicate #'command-completion-default-include-p)
+
 ;; Minibuffer
 (setq enable-recursive-minibuffers t)
 
