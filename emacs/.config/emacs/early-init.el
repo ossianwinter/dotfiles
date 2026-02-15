@@ -1,3 +1,14 @@
+;;; early-init.el --- À la carte -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2026 Ossian Winter
+;; Author: Ossian Winter <ossian@winter.vg>
+
+;;; Commentary:
+
+;; À la carte.
+
+;;; Code:
+
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
 (setq frame-inhibit-implied-resize t)
@@ -16,3 +27,6 @@
 (setq scroll-bar-mode nil)
 
 (add-to-list 'default-frame-alist '(font . "Berkeley Mono-16"))
+
+(provide 'early-init)
+;;; early-init.el ends here
