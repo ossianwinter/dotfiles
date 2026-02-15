@@ -43,7 +43,8 @@
 
 ;;;; Global:
 
-(keymap-global-set "M-y" #'consult-yank-pop) ; replaces `yank-pop'
+(keymap-global-set "M-y" #'consult-yank-pop)    ; replaces `yank-pop'
+(keymap-global-set "C-." #'avy-goto-char-timer) ; read N chars and jump to the first one
 
 ;;; Completion:
 
@@ -81,6 +82,11 @@
   (let ((rg-args (if (listp consult-ripgrep-args) consult-ripgrep-args (list consult-ripgrep-args))))
     (unless (member "--hidden" rg-args)
       (setq consult-ripgrep-args (append rg-args '("--hidden"))))))
+
+;;; Text navigation:
+
+(unless (package-installed-p 'avy)
+  (package-install 'avy))
 
 ;;; Code navigation:
 
