@@ -1,7 +1,9 @@
 ;;; init.el --- À la carte -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 Ossian Winter
+
 ;; Author: Ossian Winter <ossian@winter.vg>
+;; URL: https://github.com/ossianwinter/dotfiles
 
 ;;; Commentary:
 
