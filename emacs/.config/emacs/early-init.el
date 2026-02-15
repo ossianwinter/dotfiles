@@ -8,4 +8,7 @@
 (push '(right-fringe . 0) default-frame-alist)
 (setq fringe-mode nil)
 
+(push '(vertical-scroll-bars) default-frame-alist)
+(setq scroll-bar-mode nil)
+
 (add-to-list 'default-frame-alist '(font . "Berkeley Mono-16"))
