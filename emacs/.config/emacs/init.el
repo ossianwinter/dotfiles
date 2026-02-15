@@ -40,6 +40,10 @@
 
 (keymap-set search-map "g" #'consult-grep)
 
+;;;; Global:
+
+(keymap-global-set "M-y" #'consult-yank-pop) ; replaces `yank-pop'
+
 ;;; Completion:
 
 (setq completion-styles '(orderless)
