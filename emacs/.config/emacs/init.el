@@ -42,7 +42,13 @@
 
 ;;; Completion:
 
+(setq completion-styles '(orderless)
+      completion-category-overrides '((file (styles partial-completion))))
+
 (setq read-extended-command-predicate #'command-completion-default-include-p)
+
+(unless (package-installed-p 'orderless)
+  (package-install 'orderless))
 
 ;;; Minibuffer:
 
