@@ -62,9 +62,9 @@
 
 ;;; Buffer management:
 
-(unless (package-installed-p 'popper)
-  (package-install 'popper))
-(popper-mode +1)
+(unless (package-installed-p 'shackle)
+  (package-install 'shackle))
+(shackle-mode +1)
 
 ;;; Completion:
 
