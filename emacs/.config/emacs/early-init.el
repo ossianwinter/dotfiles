@@ -4,4 +4,8 @@
 (push '(tool-bar-lines . 0) default-frame-alist)
 (setq tool-bar-mode nil)
 
+(push '(left-fringe . 0) default-frame-alist)
+(push '(right-fringe . 0) default-frame-alist)
+(setq fringe-mode nil)
+
 (add-to-list 'default-frame-alist '(font . "Berkeley Mono-16"))
