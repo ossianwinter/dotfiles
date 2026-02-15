@@ -1,3 +1,4 @@
+#!/bin/bash
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
