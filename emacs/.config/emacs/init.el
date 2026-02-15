@@ -11,6 +11,8 @@
 
 ;;; Code:
 
+(require 'package)
+
 ;;; User:
 
 (setq user-full-name "Ossian Winter"
@@ -50,6 +52,13 @@
 (keymap-global-set "C-`"   #'popper-toggle)       ; toggle visibility of the last popup
 (keymap-global-set "M-`"   #'popper-cycle)        ; cycle visibility of popup windows
 (keymap-global-set "C-M-`" #'popper-toggle-type)  ; turn popup buffer into regular window or vice-versa
+
+;;; Package management:
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archive-priorities '("gnu"    . 90) t)
+(add-to-list 'package-archive-priorities '("nongnu" . 80) t)
+(add-to-list 'package-archive-priorities '("melpa"  . 70) t)
 
 ;;; Buffer management:
 
