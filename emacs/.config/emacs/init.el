@@ -39,6 +39,7 @@
 ;;;; M-s:
 
 (keymap-set search-map "g" #'consult-grep)
+(keymap-set search-map "f" #'consult-fd)
 
 ;;;; Global:
 
