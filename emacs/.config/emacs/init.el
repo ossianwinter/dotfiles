@@ -43,8 +43,17 @@
 
 ;;;; Global:
 
-(keymap-global-set "M-y" #'consult-yank-pop)    ; replaces `yank-pop'
-(keymap-global-set "C-." #'avy-goto-char-timer) ; read N chars and jump to the first one
+(keymap-global-set "M-y"   #'consult-yank-pop)    ; replaces `yank-pop'
+(keymap-global-set "C-."   #'avy-goto-char-timer) ; read N chars and jump to the first one
+(keymap-global-set "C-`"   #'popper-toggle)       ; toggle visibility of the last popup
+(keymap-global-set "M-`"   #'popper-cycle)        ; cycle visibility of popup windows
+(keymap-global-set "C-M-`" #'popper-toggle-type)  ; turn popup buffer into regular window or vice-versa
+
+;;; Buffer management:
+
+(unless (package-installed-p 'popper)
+  (package-install 'popper))
+(popper-mode +1)
 
 ;;; Completion:
 
