@@ -76,6 +76,10 @@
   (unless (member "--hidden" fd-args)
     (setq consult-fd-args (append fd-args '("--hidden")))))
 
+(let ((rg-args (if (listp consult-ripgrep-args) consult-ripgrep-args (list consult-ripgrep-args))))
+  (unless (member "--hidden" rg-args)
+    (setq consult-ripgrep-args (append rg-args '("--hidden")))))
+
 ;;; Code navigation:
 
 (setq xref-show-xrefs-function       #'consult-xref)
