@@ -1,3 +1,5 @@
+(setq frame-inhibit-implied-resize t)
+
 (push '(menu-bar-lines . 0) default-frame-alist)
 (setq menu-bar-mode nil)
 
