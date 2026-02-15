@@ -14,6 +14,10 @@
   (package-install 'vertico))
 (vertico-mode +1)
 
+(unless (package-installed-p 'marginalia)
+  (package-install 'marginalia))
+(marginalia-mode +1)
+
 ;; Version control
 (unless (package-installed-p 'magit)
   (package-install 'magit))
