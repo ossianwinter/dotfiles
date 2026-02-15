@@ -4,6 +4,9 @@
 (set-language-environment "UTF-8")
 (setq default-input-method nil)    ; side-effect of `set-language-environment'
 
+;; Minibuffer
+(setq enable-recursive-minibuffers t)
+
 (unless (package-installed-p 'vertico)
   (package-install 'vertico))
 (vertico-mode +1)
