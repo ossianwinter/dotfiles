@@ -129,6 +129,11 @@
 (unless (package-installed-p 'magit)
   (package-install 'magit))
 
+;;; Misc:
+
+(unless (package-installed-p 'eat)
+  (package-install 'eat))
+
 ;;; Postlude:
 
 (load custom-file 'noerror 'nomessage)
