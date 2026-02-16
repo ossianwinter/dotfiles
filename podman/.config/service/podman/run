@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -r ./conf ] && . ./conf
+
+exec chpst -e "$TURNSTILE_ENV_DIR" podman system service --time=0 $OPTS 2>&1
