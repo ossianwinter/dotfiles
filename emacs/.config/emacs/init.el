@@ -73,8 +73,7 @@
 
 ;;; Buffer management:
 
-(unless (package-installed-p 'shackle)
-  (package-install 'shackle))
+(unless (package-installed-p 'shackle) (package-install 'shackle))
 (shackle-mode +1)
 
 ;;; Completion:
@@ -84,22 +83,18 @@
 
 (setq read-extended-command-predicate #'command-completion-default-include-p)
 
-(unless (package-installed-p 'orderless)
-  (package-install 'orderless))
+(unless (package-installed-p 'orderless) (package-install 'orderless))
 
 ;;; Minibuffer:
 
 (setq enable-recursive-minibuffers t)
 
-(unless (package-installed-p 'consult)
-  (package-install 'consult))
+(unless (package-installed-p 'consult) (package-install 'consult))
 
-(unless (package-installed-p 'vertico)
-  (package-install 'vertico))
+(unless (package-installed-p 'vertico) (package-install 'vertico))
 (vertico-mode +1)
 
-(unless (package-installed-p 'marginalia)
-  (package-install 'marginalia))
+(unless (package-installed-p 'marginalia) (package-install 'marginalia))
 (marginalia-mode +1)
 
 ;;; File navigation:
@@ -116,8 +111,7 @@
 
 ;;; Text navigation:
 
-(unless (package-installed-p 'avy)
-  (package-install 'avy))
+(unless (package-installed-p 'avy) (package-install 'avy))
 
 ;;; Code navigation:
 
@@ -126,32 +120,27 @@
 
 ;;; Version control:
 
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
+(unless (package-installed-p 'magit) (package-install 'magit))
 
 ;;; Misc:
 
-(unless (package-installed-p 'eat)
-  (package-install 'eat))
+(unless (package-installed-p 'eat) (package-install 'eat))
 
 ;;; Window Manager:
 
 (unless (package-installed-p 'exwm) (package-install 'exwm))
 (require 'exwm)
 
-(add-hook 'exwm-update-class-hook
-	  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
-
-(add-hook 'exwm-update-title-hook
-	  (lambda () (exwm-workspace-rename-buffer exwm-title)))
+(add-hook 'exwm-update-class-hook (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+(add-hook 'exwm-update-title-hook (lambda () (exwm-workspace-rename-buffer exwm-title)))
 
 (setq exwm-input-global-keys
       `(([?\s-r] . exwm-reset)
 	([?\s-w] . exwm-workspace-switch)
 	([?\s-&] . (lambda (cmd)
 		     (interactive (list (read-shell-command "$ ")))
-		     (start-process-shell-command cmd nil cmd))))
-)
+		     (start-process-shell-command cmd nil cmd)))))
+
 (setq exwm-input-simulation-keys
       '(;; char navigation
 	([?\C-p]   . [up])
