@@ -134,9 +134,58 @@
 (unless (package-installed-p 'eat)
   (package-install 'eat))
 
+;;; Window Manager:
+
+(unless (package-installed-p 'exwm) (package-install 'exwm))
+(require 'exwm)
+
+(add-hook 'exwm-update-class-hook
+	  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+
+(add-hook 'exwm-update-title-hook
+	  (lambda () (exwm-workspace-rename-buffer exwm-title)))
+
+(setq exwm-input-global-keys
+      `(([?\s-r] . exwm-reset)
+	([?\s-w] . exwm-workspace-switch)
+	([?\s-&] . (lambda (cmd)
+		     (interactive (list (read-shell-command "$ ")))
+		     (start-process-shell-command cmd nil cmd))))
+)
+(setq exwm-input-simulation-keys
+      '(;; char navigation
+	([?\C-p]   . [up])
+	([?\C-n]   . [down])
+	([?\C-b]   . [left])
+	([?\C-f]   . [right])
+	([?\C-d]   . [delete])
+	;; word navigation
+	([?\M-b]   . [C-left])
+	([?\M-f]   . [C-right])
+	;; line navigation
+	([?\C-a]   . [home])
+	([?\C-e]   . [end])
+	([?\C-k]   . [S-end delete])
+	;; scroll
+	([?\C-v]   . [next])
+	([?\M-v]   . [prior])
+	([?\C-w]   . [?\C-x])
+	([?\M-w]   . [?\C-c])
+	([?\C-y]   . [?\C-v])
+	([?\C-s]   . [?\C-f])))
+
+;; https://github.com/minad/consult/issues/178
+;; https://github.com/minad/consult/issues/186
+;; https://github.com/minad/consult/issues/204
+;; https://github.com/minad/consult/wiki#do-not-preview-exwm-windows-or-tramp-buffers
+(setq consult-preview-excluded-buffers '(major-mode . exwm-mode))
+
+;; @Note: `exwm-wm-mode' is enabled later
+
 ;;; Postlude:
 
 (load custom-file 'noerror 'nomessage)
+(exwm-wm-mode +1) ; let `custom-file' override settings defined in this file
 
 (provide 'init)
 ;;; init.el ends here
