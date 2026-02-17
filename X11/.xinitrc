@@ -1,3 +1,3 @@
 #!/bin/sh
 [ -f ~/.xprofile ] && . ~/.xprofile
-exec dwm
+exec emacsclient --create-frame
