@@ -1,6 +1,7 @@
 #!/bin/bash
 [ -f ~/.bashrc ] && . ~/.bashrc
 
+export XDG_SESSION_TYPE=tty
 export EDITOR="emacsclient --no-window-system"
 export VISUAL="emacsclient --no-window-system"
 
