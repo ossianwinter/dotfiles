@@ -1,3 +1,3 @@
 #!/bin/sh
-export EDITOR="emacsclient --create-frame"
-export VISUAL="emacsclient --create-frame"
+export EDITOR=emacsclient
+export VISUAL=emacsclient
