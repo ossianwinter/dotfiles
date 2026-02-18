@@ -27,6 +27,10 @@
 (set-language-environment "UTF-8")
 (setopt default-input-method nil)  ; side-effect of `set-language-environment'
 
+;;; I/O:
+
+(setopt make-backup-files nil)
+
 ;;; Keymaps:
 
 ;;;; C-x:
