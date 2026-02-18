@@ -19,13 +19,13 @@
 
 ;;; User:
 
-(setq user-full-name "Ossian Winter"
-      user-mail-address "ossian@winter.vg")
+(setopt user-full-name "Ossian Winter")
+(setopt user-mail-address "ossian@winter.vg")
 
 ;;; Locale:
 
 (set-language-environment "UTF-8")
-(setq default-input-method nil)    ; side-effect of `set-language-environment'
+(setopt default-input-method nil)  ; side-effect of `set-language-environment'
 
 ;;; Keymaps:
 
@@ -58,10 +58,15 @@
 
 ;;; Package management:
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archive-priorities '("gnu"    . 90) t)
-(add-to-list 'package-archive-priorities '("nongnu" . 80) t)
-(add-to-list 'package-archive-priorities '("melpa"  . 70) t)
+(setopt package-archives
+	'(("gnu"    . "https://elpa.gnu.org/packages/")
+	  ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+	  ("melpa"  . "https://melpa.org/packages/")))
+
+(setopt package-archive-priorities
+	'(("gnu"    . 90)
+	  ("nongnu" . 80)
+	  ("melpa"  . 70)))
 
 ;;; Theme:
 
@@ -81,16 +86,16 @@
 
 ;;; Completion:
 
-(setq completion-styles '(orderless)
-      completion-category-overrides '((file (styles partial-completion))))
+(setopt completion-styles '(orderless))
+(setopt completion-category-overrides '((file (styles partial-completion))))
 
-(setq read-extended-command-predicate #'command-completion-default-include-p)
+(setopt read-extended-command-predicate #'command-completion-default-include-p)
 
 (unless (package-installed-p 'orderless) (package-install 'orderless))
 
 ;;; Minibuffer:
 
-(setq enable-recursive-minibuffers t)
+(setopt enable-recursive-minibuffers t)
 
 (unless (package-installed-p 'vertico) (package-install 'vertico))
 (vertico-mode +1)
@@ -142,40 +147,40 @@
 (add-hook 'exwm-update-class-hook (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
 (add-hook 'exwm-update-title-hook (lambda () (exwm-workspace-rename-buffer exwm-title)))
 
-(setq exwm-input-global-keys
-      `(([?\s-r] . exwm-reset)
-	([?\s-w] . exwm-workspace-switch)
-	([?\s-&] . (lambda (cmd)
-		     (interactive (list (read-shell-command "$ ")))
-		     (start-process-shell-command cmd nil cmd)))))
+(setopt exwm-input-global-keys
+	`(([?\s-r] . exwm-reset)
+	  ([?\s-w] . exwm-workspace-switch)
+	  ([?\s-&] . (lambda (cmd)
+		       (interactive (list (read-shell-command "$ ")))
+		       (start-process-shell-command cmd nil cmd)))))
 
-(setq exwm-input-simulation-keys
-      '(;; char navigation
-	([?\C-p]   . [up])
-	([?\C-n]   . [down])
-	([?\C-b]   . [left])
-	([?\C-f]   . [right])
-	([?\C-d]   . [delete])
-	;; word navigation
-	([?\M-b]   . [C-left])
-	([?\M-f]   . [C-right])
-	;; line navigation
-	([?\C-a]   . [home])
-	([?\C-e]   . [end])
-	([?\C-k]   . [S-end delete])
-	;; scroll
-	([?\C-v]   . [next])
-	([?\M-v]   . [prior])
-	([?\C-w]   . [?\C-x])
-	([?\M-w]   . [?\C-c])
-	([?\C-y]   . [?\C-v])
-	([?\C-s]   . [?\C-f])))
+(setopt exwm-input-simulation-keys
+	'(;; char navigation
+	  ([?\C-p]   . [up])
+	  ([?\C-n]   . [down])
+	  ([?\C-b]   . [left])
+	  ([?\C-f]   . [right])
+	  ([?\C-d]   . [delete])
+	  ;; word navigation
+	  ([?\M-b]   . [C-left])
+	  ([?\M-f]   . [C-right])
+	  ;; line navigation
+	  ([?\C-a]   . [home])
+	  ([?\C-e]   . [end])
+	  ([?\C-k]   . [S-end delete])
+	  ;; scroll
+	  ([?\C-v]   . [next])
+	  ([?\M-v]   . [prior])
+	  ([?\C-w]   . [?\C-x])
+	  ([?\M-w]   . [?\C-c])
+	  ([?\C-y]   . [?\C-v])
+	  ([?\C-s]   . [?\C-f])))
 
 ;; https://github.com/minad/consult/issues/178
 ;; https://github.com/minad/consult/issues/186
 ;; https://github.com/minad/consult/issues/204
 ;; https://github.com/minad/consult/wiki#do-not-preview-exwm-windows-or-tramp-buffers
-(setq consult-preview-excluded-buffers '(major-mode . exwm-mode))
+(setopt consult-preview-excluded-buffers '(major-mode . exwm-mode))
 
 ;; @Note: `exwm-wm-mode' is enabled later
 
