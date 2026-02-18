@@ -33,6 +33,7 @@
 
 (keymap-set ctl-x-map          "M-:" #'consult-complex-command)     ; replaces `repeat-complex-command'
 (keymap-set ctl-x-map          "b"   #'consult-buffer)              ; replaces `switch-to-buffer'
+(keymap-set ctl-x-map          "+"   #'zoom)                        ; replaces `balance-windows'
 (keymap-set ctl-x-4-map        "b"   #'consult-buffer-other-window) ; replaces `switch-to-buffer-other-window'
 (keymap-set ctl-x-5-map        "b"   #'consult-buffer-other-frame)  ; replaces `switch-to-buffer-other-frame'
 (keymap-set tab-prefix-map     "b"   #'consult-buffer-other-frame)  ; replaces `switch-to-buffer-other-tab'
@@ -79,6 +80,11 @@
 
 (unless (package-installed-p 'shackle) (package-install 'shackle))
 (shackle-mode +1)
+
+;;; Window management:
+
+(unless (package-installed-p 'zoom) (package-install 'zoom))
+(setopt zoom-size '(0.618 . 0.618))
 
 ;;; Completion:
 
