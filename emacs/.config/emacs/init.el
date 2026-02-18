@@ -13,6 +13,10 @@
 
 (require 'package)
 
+;;; Server:
+
+(unless (bound-and-true-p server-process) (server-start))
+
 ;;; User:
 
 (setq user-full-name "Ossian Winter"
