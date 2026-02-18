@@ -75,6 +75,8 @@
 
 ;;; Buffer management:
 
+(setopt consult-buffer-list-function #'consult--frame-buffer-list)
+
 (unless (package-installed-p 'shackle) (package-install 'shackle))
 (shackle-mode +1)
 
