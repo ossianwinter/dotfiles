@@ -13,23 +13,19 @@
 
 (require 'package)
 
-;;; Server:
+;;; System:
 
 (unless (bound-and-true-p server-process) (server-start))
+
+(set-language-environment "UTF-8")
+(setopt default-input-method nil)  ; side-effect of `set-language-environment'
+
+(setopt make-backup-files nil)
 
 ;;; User:
 
 (setopt user-full-name "Ossian Winter")
 (setopt user-mail-address "ossian@winter.vg")
-
-;;; Locale:
-
-(set-language-environment "UTF-8")
-(setopt default-input-method nil)  ; side-effect of `set-language-environment'
-
-;;; I/O:
-
-(setopt make-backup-files nil)
 
 ;;; Keymaps:
 
