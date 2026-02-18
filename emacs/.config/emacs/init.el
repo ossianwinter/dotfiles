@@ -182,7 +182,7 @@
 ;;; Postlude:
 
 (load custom-file 'noerror 'nomessage)
-(exwm-wm-mode +1) ; let `custom-file' override settings defined in this file
+(when (exwm--find-x-frame) (exwm-wm-mode +1)) ; let `custom-file' override settings defined in this file
 
 (provide 'init)
 ;;; init.el ends here
