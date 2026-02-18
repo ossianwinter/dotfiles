@@ -89,15 +89,17 @@
 
 (setq enable-recursive-minibuffers t)
 
-(unless (package-installed-p 'consult) (package-install 'consult))
-
 (unless (package-installed-p 'vertico) (package-install 'vertico))
 (vertico-mode +1)
 
 (unless (package-installed-p 'marginalia) (package-install 'marginalia))
 (marginalia-mode +1)
 
-;;; File navigation:
+;;; Navigation:
+
+(unless (package-installed-p 'consult) (package-install 'consult))
+
+;;;; File navigation:
 
 (with-eval-after-load 'consult
   (let ((fd-args (if (listp consult-fd-args) consult-fd-args (list consult-fd-args))))
@@ -109,11 +111,11 @@
     (unless (member "--hidden" rg-args)
       (setq consult-ripgrep-args (append rg-args '("--hidden"))))))
 
-;;; Text navigation:
+;;;; Text navigation:
 
 (unless (package-installed-p 'avy) (package-install 'avy))
 
-;;; Code navigation:
+;;;; Code navigation:
 
 (setq xref-show-xrefs-function       #'consult-xref)
 (setq xref-show-definitions-function #'consult-xref)
