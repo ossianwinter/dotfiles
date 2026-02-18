@@ -49,6 +49,8 @@
 
 (keymap-global-set "M-y" #'consult-yank-pop)    ; replaces `yank-pop'
 (keymap-global-set "C-." #'avy-goto-char-timer) ; read N chars and jump to the first one
+(keymap-global-set "C-;" #'embark-act)          ; prompt for action and perform it
+(keymap-global-set "C-:" #'embark-dwim)         ; perform default action on current target
 
 ;;; Package management:
 
@@ -91,6 +93,9 @@
 
 (unless (package-installed-p 'marginalia) (package-install 'marginalia))
 (marginalia-mode +1)
+
+(unless (package-installed-p 'embark) (package-install 'embark))
+(unless (package-installed-p 'embark-consult) (package-install 'embark-consult))
 
 ;;; Navigation:
 
