@@ -176,6 +176,9 @@
 ;; https://github.com/minad/consult/wiki#do-not-preview-exwm-windows-or-tramp-buffers
 (setopt consult-preview-excluded-buffers '(major-mode . exwm-mode))
 
+(unless (package-installed-p 'filechooser) (package-install 'filechooser))
+(setopt filechooser-use-popup-frame nil)
+
 ;;; Postlude:
 
 (load custom-file 'noerror 'nomessage)
