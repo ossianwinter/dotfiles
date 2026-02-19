@@ -1,2 +1,0 @@
-#!/bin/sh
-exec podman --url="unix://$XDG_RUNTIME_DIR/podman/podman.sock" info >/dev/null 2>/dev/null
