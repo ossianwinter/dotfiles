@@ -118,9 +118,9 @@
 
 ;;; Misc:
 
-;;;; Eat:
+;;;; vterm:
 
-(ossian/pkg 'eat)
+(ossian/pkg 'vterm)
 
 ;;; X11:
 
