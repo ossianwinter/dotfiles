@@ -131,7 +131,7 @@
 
 (unless (package-installed-p 'eat) (package-install 'eat))
 
-;;; Window Manager:
+;;; X11:
 
 (unless (package-installed-p 'exwm) (package-install 'exwm))
 (require 'exwm)
@@ -168,13 +168,13 @@
 	  ([?\C-y]   . [?\C-v])
 	  ([?\C-s]   . [?\C-f])))
 
+;; @Note: `exwm-wm-mode' is enabled later
+
 ;; https://github.com/minad/consult/issues/178
 ;; https://github.com/minad/consult/issues/186
 ;; https://github.com/minad/consult/issues/204
 ;; https://github.com/minad/consult/wiki#do-not-preview-exwm-windows-or-tramp-buffers
 (setopt consult-preview-excluded-buffers '(major-mode . exwm-mode))
-
-;; @Note: `exwm-wm-mode' is enabled later
 
 ;;; Postlude:
 
