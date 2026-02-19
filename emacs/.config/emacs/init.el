@@ -25,6 +25,8 @@
 
 (require 'package)
 
+(defun ossian/pkg (pkg) (unless (package-installed-p pkg) (package-install pkg)))
+
 (setopt package-archives
 	'(("gnu"    . "https://elpa.gnu.org/packages/")
 	  ("nongnu" . "https://elpa.nongnu.org/nongnu/")
@@ -46,7 +48,7 @@
 
 ;;;; Orderless:
 
-(unless (package-installed-p 'orderless) (package-install 'orderless))
+(ossian/pkg 'orderless)
 
 (setopt completion-styles '(orderless))
 (setopt completion-category-overrides '((file (styles partial-completion))))
@@ -57,20 +59,20 @@
 
 ;;;; Vertico:
 
-(unless (package-installed-p 'vertico) (package-install 'vertico))
+(ossian/pkg 'vertico)
 
 (vertico-mode +1)
 
 ;;;; Marginalia:
 
-(unless (package-installed-p 'marginalia) (package-install 'marginalia))
+(ossian/pkg 'marginalia)
 
 (marginalia-mode +1)
 
 ;;;; Embark:
 
-(unless (package-installed-p 'embark) (package-install 'embark))
-(unless (package-installed-p 'embark-consult) (package-install 'embark-consult))
+(ossian/pkg 'embark)
+(ossian/pkg 'embark-consult)
 
 (keymap-global-set "C-;" #'embark-act)  ; prompt for action and perform it
 (keymap-global-set "C-:" #'embark-dwim) ; perform default action on current target
@@ -79,7 +81,7 @@
 
 ;;;; Consult:
 
-(unless (package-installed-p 'consult) (package-install 'consult))
+(ossian/pkg 'consult)
 
 (setopt consult-buffer-list-function     #'consult--frame-buffer-list)
 (setopt consult-preview-excluded-buffers  '(major-mode . exwm-mode))
@@ -104,7 +106,7 @@
 
 ;;;; avy:
 
-(unless (package-installed-p 'avy) (package-install 'avy))
+(ossian/pkg 'avy)
 
 (keymap-global-set "C-." #'avy-goto-char-timer) ; read N chars and jump to the first one
 
@@ -112,25 +114,25 @@
 
 ;;;; Magit:
 
-(unless (package-installed-p 'magit) (package-install 'magit))
+(ossian/pkg 'magit)
 
 ;;; Misc:
 
 ;;;; Eat:
 
-(unless (package-installed-p 'eat) (package-install 'eat))
+(ossian/pkg 'eat)
 
 ;;; X11:
 
 ;;;; filechooser:
 
-(unless (package-installed-p 'filechooser) (package-install 'filechooser))
+(ossian/pkg 'filechooser)
 
 (setopt filechooser-use-popup-frame nil)
 
 ;;;; EXWM:
 
-(unless (package-installed-p 'exwm) (package-install 'exwm))
+(ossian/pkg 'exwm)
 
 (setopt exwm-input-global-keys
 	`(([?\s-r] . exwm-reset)
