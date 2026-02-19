@@ -164,7 +164,6 @@
 (add-hook 'exwm-update-class-hook (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
 (add-hook 'exwm-update-title-hook (lambda () (exwm-workspace-rename-buffer exwm-title)))
 
-(load custom-file 'noerror 'nomessage)
 (exwm-wm-mode +1)
 
 (provide 'init)
