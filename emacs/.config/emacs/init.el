@@ -89,7 +89,6 @@
 (ossian/pkg 'consult)
 
 (setopt consult-buffer-list-function     #'consult--frame-buffer-list)
-(setopt consult-preview-excluded-buffers  '(major-mode . exwm-mode))
 (setopt xref-show-xrefs-function         #'consult-xref)
 (setopt xref-show-definitions-function   #'consult-xref)
 
