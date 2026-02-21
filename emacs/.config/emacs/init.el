@@ -29,6 +29,9 @@
   (unless package-archive-contents (package-refresh-contents))
   (unless (package-installed-p pkg) (package-install pkg)))
 
+(defun ossian/vc-pkg (pkg)
+  (unless (package-installed-p (car pkg)) (package-vc-install pkg)))
+
 (setopt package-archives
 	'(("gnu"    . "https://elpa.gnu.org/packages/")
 	  ("nongnu" . "https://elpa.nongnu.org/nongnu/")
@@ -136,6 +139,10 @@
 
 (setopt filechooser-use-popup-frame nil)
 
+;;;; xdg-launcher:
+
+(ossian/vc-pkg '(xdg-launcher :url "https://github.com/emacs-exwm/xdg-launcher.git"))
+
 ;;;; EXWM:
 
 (ossian/pkg 'exwm)
@@ -143,6 +150,7 @@
 (setopt exwm-input-global-keys
 	`(([?\s-r] . exwm-reset)
 	  ([?\s-w] . exwm-workspace-switch)
+	  ([?\s-7] . xdg-launcher-run-app)
 	  ([?\s-&] . (lambda (cmd)
 		       (interactive (list (read-shell-command "$ ")))
 		       (start-process-shell-command cmd nil cmd)))))
