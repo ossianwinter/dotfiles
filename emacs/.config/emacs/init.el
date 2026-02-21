@@ -120,6 +120,10 @@
 
 ;;; Misc:
 
+;;;; eat:
+
+(ossian/pkg 'eat)
+
 ;;;; vterm:
 
 (ossian/pkg 'vterm)
