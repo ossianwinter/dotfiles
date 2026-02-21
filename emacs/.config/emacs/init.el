@@ -25,7 +25,9 @@
 
 (require 'package)
 
-(defun ossian/pkg (pkg) (unless (package-installed-p pkg) (package-install pkg)))
+(defun ossian/pkg (pkg)
+  (unless package-archive-contents (package-refresh-contents))
+  (unless (package-installed-p pkg) (package-install pkg)))
 
 (setopt package-archives
 	'(("gnu"    . "https://elpa.gnu.org/packages/")
