@@ -141,6 +141,12 @@
 
 (ossian/vc-pkg '(xdg-launcher :url "https://github.com/emacs-exwm/xdg-launcher.git"))
 
+;;;; EDNC:
+
+(ossian/pkg 'ednc)
+
+(ednc-mode +1)
+
 ;;;; bluetooth:
 
 (ossian/pkg 'bluetooth)
