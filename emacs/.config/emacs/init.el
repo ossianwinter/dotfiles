@@ -141,6 +141,10 @@
 
 (ossian/vc-pkg '(xdg-launcher :url "https://github.com/emacs-exwm/xdg-launcher.git"))
 
+;;;; bluetooth:
+
+(ossian/pkg 'bluetooth)
+
 ;;;; EXWM:
 
 (ossian/pkg 'exwm)
