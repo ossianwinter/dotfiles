@@ -64,6 +64,11 @@
      ("nongnu" . 80)
      ("melpa"  . 70))))
 
+(use-package doom-modeline
+  :demand t
+  :config
+  (doom-modeline-mode +1))
+
 (use-package modus-themes
   :demand t
   :config
