@@ -139,6 +139,7 @@
 
 (use-package exwm
   :demand t
+  :if (eq window-system 'x)
   :custom
   (exwm-input-global-keys
    `(([?\s-r] . exwm-reset)
