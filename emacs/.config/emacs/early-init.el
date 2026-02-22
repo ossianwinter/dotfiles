@@ -14,6 +14,7 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
 (setq frame-inhibit-implied-resize t)
+(setq inhibit-compacting-font-caches t)
 
 (push '(menu-bar-lines . 0) default-frame-alist)
 (setq menu-bar-mode nil)
