@@ -11,188 +11,165 @@
 
 ;;; Code:
 
-(unless (bound-and-true-p server-process) (server-start))
-
-(set-language-environment "UTF-8")
-(setopt default-input-method nil)  ; side-effect of `set-language-environment'
-
-(setopt user-full-name "Ossian Winter")
-(setopt user-mail-address "ossian@winter.vg")
-
-(setopt make-backup-files nil)
-
-;;; Package management:
-
-(require 'package)
-
-(defun ossian/pkg (pkg)
-  (unless package-archive-contents (package-refresh-contents))
-  (unless (package-installed-p pkg) (package-install pkg)))
-
-(defun ossian/vc-pkg (pkg)
-  (unless (package-installed-p (car pkg)) (package-vc-install pkg)))
-
-(setopt package-archives
-	'(("gnu"    . "https://elpa.gnu.org/packages/")
-	  ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-	  ("melpa"  . "https://melpa.org/packages/")))
-
-(setopt package-archive-priorities
-	'(("gnu"    . 90)
-	  ("nongnu" . 80)
-	  ("melpa"  . 70)))
-
-;;; Visual:
-
-(require-theme 'modus-themes)
-(modus-themes-load-theme 'modus-vivendi)
-
-;;; Completion:
-
-(setopt read-extended-command-predicate #'command-completion-default-include-p)
-
-;;;; Orderless:
-
-(ossian/pkg 'orderless)
-
-(setopt completion-styles '(orderless))
-(setopt completion-category-overrides '((file (styles partial-completion))))
-
-;;; Minibuffer:
-
-(setopt enable-recursive-minibuffers t)
-
-;;;; Vertico:
-
-(ossian/pkg 'vertico)
-
-(vertico-mode +1)
-
-;;;; Marginalia:
-
-(ossian/pkg 'marginalia)
-
-(marginalia-mode +1)
-
-;;;; Embark:
-
-(ossian/pkg 'embark)
-(ossian/pkg 'embark-consult)
-
-(keymap-global-set "C-;" #'embark-act)  ; prompt for action and perform it
-(keymap-global-set "C-:" #'embark-dwim) ; perform default action on current target
-
-;;; Navigation:
-
-;;;; Consult:
-
-(ossian/pkg 'consult)
-
-(setopt xref-show-xrefs-function       #'consult-xref)
-(setopt xref-show-definitions-function #'consult-xref)
-
-(keymap-global-set "M-y" #'consult-yank-pop) ; replaces `yank-pop'
-
-(keymap-set ctl-x-map          "M-:" #'consult-complex-command)     ; replaces `repeat-complex-command'
-(keymap-set ctl-x-map          "b"   #'consult-buffer)              ; replaces `switch-to-buffer'
-(keymap-set ctl-x-4-map        "b"   #'consult-buffer-other-window) ; replaces `switch-to-buffer-other-window'
-(keymap-set ctl-x-5-map        "b"   #'consult-buffer-other-frame)  ; replaces `switch-to-buffer-other-frame'
-(keymap-set tab-prefix-map     "b"   #'consult-buffer-other-frame)  ; replaces `switch-to-buffer-other-tab'
-(keymap-set bookmark-map       "b"   #'consult-bookmark)            ; replaces `bookmark-jump'
-(keymap-set project-prefix-map "b"   #'consult-project-buffer)      ; replaces `project-switch-to-buffer'
-
-(keymap-set goto-map "g"   #'consult-goto-line) ; replaces `goto-line'
-(keymap-set goto-map "M-g" #'consult-goto-line) ; replaces `goto-line'
-
-(keymap-set search-map "g" #'consult-ripgrep) ; search with rg
-(keymap-set search-map "f" #'consult-fd)      ; search with fd
-
-;;;; avy:
-
-(ossian/pkg 'avy)
-
-(keymap-global-set "C-." #'avy-goto-char-timer) ; read N chars and jump to the first one
-
-;;; Version control:
-
-;;;; Magit:
-
-(ossian/pkg 'magit)
-
-;;;;; Forge:
-
-(ossian/pkg 'forge)
-
-;;; Misc:
-
-;;;; eat:
-
-(ossian/pkg 'eat)
-
-;;;; vterm:
-
-(ossian/pkg 'vterm)
-
-;;; X11:
-
-;;;; filechooser:
-
-(ossian/pkg 'filechooser)
-
-(setopt filechooser-use-popup-frame nil)
-
-;;;; xdg-launcher:
-
-(ossian/vc-pkg '(xdg-launcher :url "https://github.com/emacs-exwm/xdg-launcher.git"))
-
-;;;; EDNC:
-
-(ossian/pkg 'ednc)
-
-(ednc-mode +1)
-
-;;;; bluetooth:
-
-(ossian/pkg 'bluetooth)
-
-;;;; EXWM:
-
-(ossian/pkg 'exwm)
-
-(setopt exwm-input-global-keys
-	`(([?\s-r] . exwm-reset)
-	  ([?\s-w] . exwm-workspace-switch)
-	  ([?\s-7] . xdg-launcher-run-app)
-	  ([?\s-&] . (lambda (cmd)
-		       (interactive (list (read-shell-command "$ ")))
-		       (start-process-shell-command cmd nil cmd)))))
-
-(setopt exwm-input-simulation-keys
-	'(;; char navigation
-	  ([?\C-p]   . [up])
-	  ([?\C-n]   . [down])
-	  ([?\C-b]   . [left])
-	  ([?\C-f]   . [right])
-	  ([?\C-d]   . [delete])
-	  ;; word navigation
-	  ([?\M-b]   . [C-left])
-	  ([?\M-f]   . [C-right])
-	  ;; line navigation
-	  ([?\C-a]   . [home])
-	  ([?\C-e]   . [end])
-	  ([?\C-k]   . [S-end delete])
-	  ;; scroll
-	  ([?\C-v]   . [next])
-	  ([?\M-v]   . [prior])
-	  ([?\C-w]   . [?\C-x])
-	  ([?\M-w]   . [?\C-c])
-	  ([?\C-y]   . [?\C-v])
-	  ([?\C-s]   . [?\C-f])))
-
-(add-hook 'exwm-update-class-hook (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
-(add-hook 'exwm-update-title-hook (lambda () (exwm-workspace-rename-buffer exwm-title)))
-
-(exwm-wm-mode +1)
+(require 'use-package)
+
+(setopt use-package-always-defer t)
+(setopt use-package-always-ensure t)
+(setopt use-package-expand-minimally t)
+
+(use-package emacs
+  :custom
+  (enable-recursive-minibuffers t))
+
+(use-package mule-cmds
+  :ensure nil
+  :no-require t
+  :init
+  (set-language-environment "UTF-8")
+  (setopt default-input-method nil))
+
+(use-package startup
+  :ensure nil
+  :no-require t
+  :custom
+  (user-full-name "Ossian Winter")
+  (user-mail-address "ossian@winter.vg"))
+
+(use-package files
+  :ensure nil
+  :custom
+  (make-backup-files nil))
+
+(use-package simple
+  :ensure nil
+  :custom
+  (read-extended-command-predicate #'command-completion-default-include-p))
+
+(use-package server
+  :ensure nil
+  :demand t
+  :config
+  (unless (bound-and-true-p server-process)
+    (server-start)))
+
+(use-package package
+  :ensure nil
+  :custom
+  (package-archives
+   '(("gnu"    . "https://elpa.gnu.org/packages/")
+     ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+     ("melpa"  . "https://melpa.org/packages/")))
+  (package-archive-priorities
+   '(("gnu"    . 90)
+     ("nongnu" . 80)
+     ("melpa"  . 70))))
+
+(use-package modus-themes
+  :demand t
+  :config
+  (modus-themes-load-theme 'modus-vivendi))
+
+(use-package vertico
+  :demand t
+  :config
+  (vertico-mode +1))
+
+(use-package marginalia
+  :demand t
+  :config
+  (marginalia-mode +1))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package embark
+  :bind
+  (("C-;" . embark-act)
+   ("C-:" . embark-dwim)))
+
+(use-package embark-consult
+  :after (embark consult))
+
+(use-package consult
+  :custom
+  (xref-show-xrefs-function       #'consult-xref)
+  (xref-show-definitions-function #'consult-xref)
+  :bind
+  (("M-y" . consult-yank-pop)
+   :map goto-map           ("g"   . consult-goto-line)
+   :map goto-map           ("M-g" . consult-goto-line)
+   :map search-map         ("g"   . consult-ripgrep)
+   :map search-map         ("f"   . consult-fd)
+   :map ctl-x-map          ("M-:" . consult-complex-command)
+   :map ctl-x-map          ("b"   . consult-buffer)
+   :map ctl-x-4-map        ("b"   . consult-buffer-other-window)
+   :map ctl-x-5-map        ("b"   . consult-buffer-other-frame)
+   :map tab-prefix-map     ("b"   . consult-buffer-other-tab)
+   :map bookmark-map       ("b"   . consult-bookmark)
+   :map project-prefix-map ("b"   . consult-project-buffer)))
+
+(use-package avy
+  :bind
+  ("C-." . avy-goto-char-timer))
+
+(use-package magit
+  :bind
+  (:map ctl-x-map ("g" . magit-status)))
+
+(use-package forge)
+
+(use-package eat)
+
+(use-package filechooser
+  :custom
+  (filechooser-use-popup-frame nil))
+
+(use-package app-launcher
+  :vc (:url "https://github.com/emacs-exwm/xdg-launcher.git"))
+
+(use-package ednc
+  :demand t
+  :config
+  (ednc-mode +1))
+
+(use-package bluetooth
+  :if (eq system-name "ossian-laptop"))
+
+(use-package exwm
+  :demand t
+  :custom
+  (exwm-input-global-keys
+   `(([?\s-r] . exwm-reset)
+     ([?\s-w] . exwm-workspace-switch)
+     ([?\s-7] . app-launcher-run-app)
+     ([?\s-&] . (lambda (cmd)
+		  (interactive (list (read-shell-command "$ ")))
+		  (start-process-shell-command cmd nil cmd)))))
+  (exwm-input-simulation-keys
+   '(;; char navigation
+     ([?\C-p]   . [up])
+     ([?\C-n]   . [down])
+     ([?\C-b]   . [left])
+     ([?\C-f]   . [right])
+     ([?\C-d]   . [delete])
+     ;; word navigation
+     ([?\M-b]   . [C-left])
+     ([?\M-f]   . [C-right])
+     ;; line navigation
+     ([?\C-a]   . [home])
+     ([?\C-e]   . [end])
+     ([?\C-k]   . [S-end delete])
+     ;; scroll
+     ([?\C-v]   . [next])
+     ([?\M-v]   . [prior])
+     ([?\C-w]   . [?\C-x])
+     ([?\M-w]   . [?\C-c])
+     ([?\C-y]   . [?\C-v])
+     ([?\C-s]   . [?\C-f])))
+  :config
+  (exwm-wm-mode +1))
 
 (provide 'init)
 ;;; init.el ends here
