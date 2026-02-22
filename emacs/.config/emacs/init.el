@@ -140,6 +140,9 @@
 (use-package exwm
   :demand t
   :if (eq window-system 'x)
+  :hook
+  (exwm-update-class . (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+  (exwm-update-title . (lambda () (exwm-workspace-rename-buffer exwm-title)))
   :custom
   (exwm-input-global-keys
    `(([?\s-r] . exwm-reset)
