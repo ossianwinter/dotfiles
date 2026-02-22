@@ -38,7 +38,8 @@
 (use-package files
   :ensure nil
   :custom
-  (make-backup-files nil))
+  (make-backup-files nil)
+  (find-file-visit-truename t))
 
 (use-package simple
   :ensure nil
