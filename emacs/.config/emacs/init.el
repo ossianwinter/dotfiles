@@ -141,7 +141,7 @@
   (ednc-mode +1))
 
 (use-package bluetooth
-  :if (eq system-name "ossian-laptop"))
+  :if (equal system-name "ossian-laptop"))
 
 (use-package exwm
   :demand t
