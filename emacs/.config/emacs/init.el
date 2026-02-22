@@ -119,6 +119,10 @@
 
 (ossian/pkg 'magit)
 
+;;;;; Forge:
+
+(ossian/pkg 'forge)
+
 ;;; Misc:
 
 ;;;; eat:
