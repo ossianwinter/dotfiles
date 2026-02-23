@@ -150,6 +150,10 @@
    :map bookmark-map       ("b"   . consult-bookmark)
    :map project-prefix-map ("b"   . consult-project-buffer)))
 
+(use-package vundo
+  :bind
+  ((:map ctl-x-map ("u" . vundo))))
+
 (use-package avy
   :bind
   ("C-." . avy-goto-char-timer))
