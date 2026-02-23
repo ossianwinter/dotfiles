@@ -159,7 +159,8 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   (magit-commit-show-diff nil)
   :init
-  (add-to-list 'project-switch-commands '(magit-project-status "Magit") t)
+  (with-eval-after-load 'project
+    (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
   :bind
   ((:map ctl-x-map          ("g" . magit-status))
    (:map project-prefix-map ("m" . magit-project-status))))
