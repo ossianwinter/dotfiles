@@ -136,6 +136,7 @@
   :bind
   (:map ctl-x-map ("g" . magit-status))
   :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   (magit-commit-show-diff nil))
 
 (use-package forge)
