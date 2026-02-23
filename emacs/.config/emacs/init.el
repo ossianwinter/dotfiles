@@ -13,13 +13,21 @@
 
 (require 'use-package)
 
+(defun ossian/read-file-contents (file)
+  (and (file-exists-p file)
+       (with-temp-buffer
+         (insert-file-contents file)
+         (read (current-buffer)))))
+
 (setopt use-package-always-defer t)
 (setopt use-package-always-ensure t)
 (setopt use-package-expand-minimally t)
 
 (use-package emacs
   :custom
-  (enable-recursive-minibuffers t))
+  (enable-recursive-minibuffers t)
+  ;; @Todo: This will break on non-GNU/Linux systems.
+  (read-process-output-max (ossian/read-file-contents "/proc/sys/fs/pipe-max-size")))
 
 (use-package mule-cmds
   :ensure nil
