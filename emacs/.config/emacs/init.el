@@ -134,7 +134,9 @@
 
 (use-package magit
   :bind
-  (:map ctl-x-map ("g" . magit-status)))
+  (:map ctl-x-map ("g" . magit-status))
+  :custom
+  (magit-commit-show-diff nil))
 
 (use-package forge)
 
