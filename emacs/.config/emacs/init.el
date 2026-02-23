@@ -26,6 +26,7 @@
 (use-package emacs
   :custom
   (enable-recursive-minibuffers t)
+  (gc-cons-threshold (* 1024 (* 1024 32)))
   ;; @Todo: This will break on non-GNU/Linux systems.
   (read-process-output-max (ossian/read-file-contents "/proc/sys/fs/pipe-max-size")))
 
