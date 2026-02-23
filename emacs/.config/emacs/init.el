@@ -58,6 +58,11 @@
   :config
   (blink-cursor-mode -1))
 
+(use-package window
+  :ensure nil
+  :custom
+  (quit-window-kill-buffer t))
+
 (use-package time
   :ensure t
   :custom
