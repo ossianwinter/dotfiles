@@ -55,6 +55,7 @@
 
 (use-package frame
   :ensure nil
+  :demand t
   :config
   (blink-cursor-mode -1))
 
@@ -64,7 +65,8 @@
   (quit-window-kill-buffer t))
 
 (use-package time
-  :ensure t
+  :ensure nil
+  :demand t
   :custom
   (display-time-default-load-average nil)
   :config
@@ -138,11 +140,14 @@
   ("C-." . avy-goto-char-timer))
 
 (use-package magit
-  :bind
-  (:map ctl-x-map ("g" . magit-status))
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  (magit-commit-show-diff nil))
+  (magit-commit-show-diff nil)
+  :init
+  (add-to-list 'project-switch-commands '(magit-project-status "Magit") t)
+  :bind
+  ((:map ctl-x-map          ("g" . magit-status))
+   (:map project-prefix-map ("m" . magit-project-status))))
 
 (use-package forge)
 
