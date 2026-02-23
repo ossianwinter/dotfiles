@@ -53,6 +53,11 @@
   (unless (bound-and-true-p server-process)
     (server-start)))
 
+(use-package frame
+  :ensure nil
+  :config
+  (blink-cursor-mode -1))
+
 (use-package package
   :ensure nil
   :custom
