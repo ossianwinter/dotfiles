@@ -87,6 +87,14 @@
   :config
   (display-time-mode +1))
 
+(use-package org
+  :ensure nil
+  :custom
+  (org-agenda-window-setup 'current-window)
+  (org-agenda-restore-windows-after-quit t)
+  (org-agenda-files '("~/org/notes.org"))
+  (org-default-notes-file "~/org/notes.org"))
+
 (use-package package
   :ensure nil
   :custom
