@@ -146,17 +146,17 @@
   (xref-show-definitions-function #'consult-xref)
   :bind
   (("M-y" . consult-yank-pop)
-   :map goto-map           ("g"   . consult-goto-line)
-   :map goto-map           ("M-g" . consult-goto-line)
-   :map search-map         ("g"   . consult-ripgrep)
-   :map search-map         ("f"   . consult-fd)
-   :map ctl-x-map          ("M-:" . consult-complex-command)
-   :map ctl-x-map          ("b"   . consult-buffer)
-   :map ctl-x-4-map        ("b"   . consult-buffer-other-window)
-   :map ctl-x-5-map        ("b"   . consult-buffer-other-frame)
-   :map tab-prefix-map     ("b"   . consult-buffer-other-tab)
-   :map bookmark-map       ("b"   . consult-bookmark)
-   :map project-prefix-map ("b"   . consult-project-buffer)))
+   (:map goto-map           ("g"   . consult-goto-line))
+   (:map goto-map           ("M-g" . consult-goto-line))
+   (:map search-map         ("g"   . consult-ripgrep))
+   (:map search-map         ("f"   . consult-fd))
+   (:map ctl-x-map          ("M-:" . consult-complex-command))
+   (:map ctl-x-map          ("b"   . consult-buffer))
+   (:map ctl-x-4-map        ("b"   . consult-buffer-other-window))
+   (:map ctl-x-5-map        ("b"   . consult-buffer-other-frame))
+   (:map tab-prefix-map     ("b"   . consult-buffer-other-tab))
+   (:map bookmark-map       ("b"   . consult-bookmark))
+   (:map project-prefix-map ("b"   . consult-project-buffer))))
 
 (use-package vundo
   :bind
@@ -171,7 +171,7 @@
 
 (use-package avy
   :bind
-  ("C-." . avy-goto-char-timer))
+  (("C-." . avy-goto-char-timer)))
 
 (use-package magit
   :custom
