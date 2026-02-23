@@ -162,6 +162,13 @@
   :bind
   ((:map ctl-x-map ("u" . vundo))))
 
+(use-package multiple-cursors
+  :bind
+  (("C->"     . mc/mark-next-like-this)
+   ("C-<"     . mc/mark-previous-like-this)
+   ("C-c C->" . mc/mark-all-like-this)
+   ("C-c C->" . mc/mark-all-like-this)))
+
 (use-package avy
   :bind
   ("C-." . avy-goto-char-timer))
