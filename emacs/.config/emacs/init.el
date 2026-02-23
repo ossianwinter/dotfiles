@@ -108,14 +108,16 @@
      ("melpa"  . 70))))
 
 (use-package modus-themes
-  :demand t
   :custom
+  (modus-themes-include-derivatives-mode t)
   (modus-themes-common-palette-overrides
    `((border-mode-line-active   nil)
-     (border-mode-line-inactive nil)
-     ,@modus-themes-preset-overrides-faint))
+     (border-mode-line-inactive nil))))
+
+(use-package ef-themes
+  :demand t
   :config
-  (modus-themes-load-theme 'modus-vivendi))
+  (modus-themes-load-theme 'ef-autumn))
 
 (use-package doom-modeline
   :demand t
