@@ -64,6 +64,12 @@
   :custom
   (quit-window-kill-buffer t))
 
+(use-package which-key
+  :ensure nil
+  :demand t
+  :config
+  (which-key-mode +1))
+
 (use-package time
   :ensure nil
   :demand t
