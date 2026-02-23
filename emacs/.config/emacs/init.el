@@ -197,8 +197,9 @@
   :custom
   (filechooser-use-popup-frame nil))
 
-(use-package app-launcher
-  :vc (:url "https://github.com/emacs-exwm/xdg-launcher.git"))
+(use-package xdg-launcher
+  :vc
+  (:url "https://github.com/emacs-exwm/xdg-launcher.git" :rev "ca774d0"))
 
 (use-package ednc
   :demand t
@@ -215,7 +216,7 @@
   (exwm-input-global-keys
    `(([?\s-r] . exwm-reset)
      ([?\s-w] . exwm-workspace-switch)
-     ([?\s-7] . app-launcher-run-app)
+     ([?\s-7] . xdg-launcher-run-app)
      ([?\s-&] . (lambda (cmd)
 		  (interactive (list (read-shell-command "$ ")))
 		  (start-process-shell-command cmd nil cmd)))))
