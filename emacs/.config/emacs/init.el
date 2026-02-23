@@ -109,6 +109,11 @@
 
 (use-package modus-themes
   :demand t
+  :custom
+  (modus-themes-common-palette-overrides
+   `((border-mode-line-active   nil)
+     (border-mode-line-inactive nil)
+     ,@modus-themes-preset-overrides-faint))
   :config
   (modus-themes-load-theme 'modus-vivendi))
 
