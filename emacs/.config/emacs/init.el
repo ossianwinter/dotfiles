@@ -58,6 +58,13 @@
   :config
   (blink-cursor-mode -1))
 
+(use-package time
+  :ensure t
+  :custom
+  (display-time-default-load-average nil)
+  :config
+  (display-time-mode +1))
+
 (use-package package
   :ensure nil
   :custom
