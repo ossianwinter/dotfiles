@@ -100,6 +100,11 @@
   (org-agenda-files '("~/org/notes.org"))
   (org-default-notes-file "~/org/notes.org"))
 
+(use-package epg
+  :ensure nil
+  :custom
+  (epg-pinentry-mode 'loopback))
+
 (use-package package
   :ensure nil
   :custom
