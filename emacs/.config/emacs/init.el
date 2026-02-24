@@ -73,6 +73,11 @@
   :custom
   (quit-window-kill-buffer t))
 
+(use-package text-mode
+  :ensure nil
+  :custom
+  (text-mode-ispell-word-completion nil))
+
 (use-package which-key
   :ensure nil
   :demand t
