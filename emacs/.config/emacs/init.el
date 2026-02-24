@@ -134,6 +134,11 @@
   :config
   (marginalia-mode +1))
 
+(use-package corfu
+  :demand t
+  :config
+  (global-corfu-mode +1))
+
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
