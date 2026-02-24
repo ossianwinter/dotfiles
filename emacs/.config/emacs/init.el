@@ -105,6 +105,12 @@
   :custom
   (epg-pinentry-mode 'loopback))
 
+(use-package auth-source-pass
+  :ensure nil
+  :demand t
+  :config
+  (auth-source-pass-enable))
+
 (use-package package
   :ensure nil
   :custom
