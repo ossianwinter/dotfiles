@@ -11,197 +11,89 @@
 
 ;;; Code:
 
-(require 'use-package)
-
 (defun ossian/read-file-contents (file)
   (and (file-exists-p file)
        (with-temp-buffer
          (insert-file-contents file)
          (read (current-buffer)))))
 
-(setopt use-package-always-defer t)
-(setopt use-package-always-ensure t)
-(setopt use-package-expand-minimally t)
+;;;; Core:
 
-(use-package emacs
-  :custom
-  (enable-recursive-minibuffers t)
-  (gc-cons-threshold (* 1024 (* 1024 32)))
-  ;; @Todo: This will break on non-GNU/Linux systems.
-  (read-process-output-max (ossian/read-file-contents "/proc/sys/fs/pipe-max-size")))
+(unless (bound-and-true-p server-process) (server-start))
 
-(use-package mule-cmds
-  :ensure nil
-  :no-require t
-  :init
-  (set-language-environment "UTF-8")
-  (setopt default-input-method nil))
+(setopt user-full-name    "Ossian Winter"
+	user-mail-address "ossian@winter.vg")
 
-(use-package startup
-  :ensure nil
-  :no-require t
-  :custom
-  (user-full-name "Ossian Winter")
-  (user-mail-address "ossian@winter.vg"))
+(setopt gc-cons-threshold       (* 32 (* 1024 1024))
+	read-process-output-max	(ossian/read-file-contents "/proc/sys/fs/pipe-max-size")) ; @Todo: This will break on non-GNU/Linux systems.
 
-(use-package files
-  :ensure nil
-  :custom
-  (make-backup-files nil)
-  (find-file-visit-truename t))
+(set-language-environment "UTF-8")
+(setopt default-input-method nil)
 
-(use-package simple
-  :ensure nil
-  :custom
-  (read-extended-command-predicate #'command-completion-default-include-p))
+(setopt package-archives '(("gnu"    . "https://elpa.gnu.org/packages/")
+			   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+			   ("melpa"  . "https://melpa.org/packages/"))
+	package-archive-priorities '(("gnu"    . 90)
+				     ("nongnu" . 80)
+				     ("melpa"  . 70)))
 
-(use-package server
-  :ensure nil
-  :demand t
-  :config
-  (unless (bound-and-true-p server-process)
-    (server-start)))
+(setopt use-package-always-defer     t
+	use-package-always-ensure    t
+	use-package-expand-minimally t)
 
-(use-package frame
-  :ensure nil
-  :demand t
-  :config
-  (blink-cursor-mode -1))
+;;;; Appearance:
 
-(use-package window
-  :ensure nil
-  :custom
-  (quit-window-kill-buffer t))
+(blink-cursor-mode -1)
 
-(use-package text-mode
-  :ensure nil
-  :custom
-  (text-mode-ispell-word-completion nil))
+(setopt display-time-default-load-average nil)
+(display-time-mode +1)
 
-(use-package which-key
-  :ensure nil
-  :demand t
-  :config
-  (which-key-mode +1))
+(which-key-mode +1)
 
-(use-package time
-  :ensure nil
-  :demand t
-  :custom
-  (display-time-default-load-average nil)
-  :config
-  (display-time-mode +1))
-
-(use-package org
-  :ensure nil
-  :custom
-  (org-agenda-window-setup 'current-window)
-  (org-agenda-restore-windows-after-quit t)
-  (org-agenda-files '("~/org/notes.org"))
-  (org-default-notes-file "~/org/notes.org"))
-
-(use-package epg
-  :ensure nil
-  :custom
-  (epg-pinentry-mode 'loopback))
-
-(use-package auth-source
-  :ensure nil
-  :custom
-  (auth-sources '("~/.authinfo.gpg")))
-
-(use-package auth-source-pass
-  :ensure nil
-  :demand t
-  :config
-  (auth-source-pass-enable))
-
-(use-package gnus
-  :ensure nil
-  :custom
-  (gnus-select-method
-   '(nnimap "bridge"
-	    (nnimap-address "127.0.0.1")
-	    (nnimap-server-port 1143)
-	    (nnimap-stream starttls))))
-
-(use-package smtpmail
-  :ensure nil
-  :custom
-  (smtpmail-smtp-server "127.0.0.1")
-  (smtpmail-smtp-service 1025)
-  (smtpmail-stream-type 'starttls))
-
-(use-package message
-  :ensure nil
-  :custom
-  (message-send-mail-function 'smtpmail-send-it))
-
-(use-package package
-  :ensure nil
-  :custom
-  (package-archives
-   '(("gnu"    . "https://elpa.gnu.org/packages/")
-     ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-     ("melpa"  . "https://melpa.org/packages/")))
-  (package-archive-priorities
-   '(("gnu"    . 90)
-     ("nongnu" . 80)
-     ("melpa"  . 70))))
-
-(use-package modus-themes
-  :custom
-  (modus-themes-include-derivatives-mode t)
-  (modus-themes-common-palette-overrides
-   `((border-mode-line-active   nil)
-     (border-mode-line-inactive nil))))
+(setopt modus-themes-include-derivatives-mode t
+	modus-themes-common-palette-overrides '((border-mode-line-active   nil)
+						(border-mode-line-inactive nil)))
 
 (use-package ef-themes
-  :demand t
-  :config
+  :init
   (modus-themes-load-theme 'ef-autumn))
 
-(use-package doom-modeline
-  :demand t
-  :config
-  (doom-modeline-mode +1))
+;;;; Buffers:
 
-(use-package vertico
-  :demand t
-  :config
-  (vertico-mode +1))
+(setopt quit-window-kill-buffer t)
 
-(use-package marginalia
-  :demand t
-  :config
-  (marginalia-mode +1))
+;;;; Files:
 
-(use-package corfu
-  :demand t
-  :config
-  (global-corfu-mode +1))
+(setopt make-backup-files nil)
 
-(use-package orderless
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles partial-completion))))
-  (completion-category-defaults nil)
-  (completion-pcm-leading-wildcard t))
+(setopt find-file-visit-truename t)
 
-(use-package embark
+;;;; Editing:
+
+(setopt org-default-notes-file                "~/org/notes.org"
+	org-agenda-files                      '("~/org/notes.org")
+	org-agenda-window-setup               'current-window
+	org-agenda-restore-windows-after-quit t)
+
+(use-package vundo
   :bind
-  (("C-;" . embark-act)
-   ("C-:" . embark-dwim)))
+  ((:map ctl-x-map ("u" . vundo))))
 
-(use-package embark-consult
-  :after (embark consult))
+(use-package multiple-cursors
+  :bind
+  ((:map global-map        ("C->" . mc/mark-next-like-this))
+   (:map global-map        ("C-<" . mc/mark-previous-like-this))
+   (:map mode-specific-map ("C->" . mc/mark-all-like-this))
+   (:map mode-specific-map ("C->" . mc/mark-all-like-this))))
+
+;;;; Navigation:
 
 (use-package consult
   :custom
   (xref-show-xrefs-function       #'consult-xref)
   (xref-show-definitions-function #'consult-xref)
   :bind
-  (("M-y" . consult-yank-pop)
+  ((:map global-map         ("M-y" . consult-yank-pop))
    (:map goto-map           ("g"   . consult-goto-line))
    (:map goto-map           ("M-g" . consult-goto-line))
    (:map search-map         ("g"   . consult-ripgrep))
@@ -214,20 +106,38 @@
    (:map bookmark-map       ("b"   . consult-bookmark))
    (:map project-prefix-map ("b"   . consult-project-buffer))))
 
-(use-package vundo
+(use-package embark
   :bind
-  ((:map ctl-x-map ("u" . vundo))))
+  ((:map global-map ("C-;" . embark-act))
+   (:map global-map ("C-:" . embark-dwim))))
 
-(use-package multiple-cursors
-  :bind
-  (("C->"     . mc/mark-next-like-this)
-   ("C-<"     . mc/mark-previous-like-this)
-   ("C-c C->" . mc/mark-all-like-this)
-   ("C-c C->" . mc/mark-all-like-this)))
+(use-package embark-consult)
 
 (use-package avy
   :bind
-  (("C-." . avy-goto-char-timer)))
+  ((:map global-map ("C-." . avy-goto-char-timer))))
+
+;;;; Email:
+
+(setopt gnus-select-method '( nnimap "bridge"
+			      (nnimap-address     "127.0.0.1")
+			      (nnimap-server-port 1143)
+			      (nnimap-stream      starttls)))
+
+(setopt smtpmail-smtp-server  "127.0.0.1"
+	smtpmail-smtp-service 1025
+	smtpmail-stream-type  'starttls)
+
+(setopt message-send-mail-function 'smtpmail-send-it)
+
+;;;; Security:
+
+(setopt epg-pinentry-mode 'loopback)
+
+(setopt auth-sources '("~/.authinfo.gpg"))
+(auth-source-pass-enable)
+
+;;;; Version control:
 
 (use-package magit
   :custom
@@ -242,61 +152,94 @@
 
 (use-package forge)
 
-(use-package eat)
+;;;; Completion:
+
+(setopt enable-recursive-minibuffers t)
+
+(setopt text-mode-ispell-word-completion nil)
+
+(setopt completion-styles               '(orderless basic)
+	completion-category-overrides   '((file (styles partial-completion)))
+	completion-category-defaults    nil
+	completion-pcm-leading-wildcard t)
+
+(setopt read-extended-command-predicate #'command-completion-default-include-p)
+
+(use-package orderless)
+
+(use-package vertico
+  :init
+  (vertico-mode +1))
+
+(use-package marginalia
+  :init
+  (marginalia-mode +1))
+
+(use-package corfu
+  :init
+  (global-corfu-mode +1))
+
+;;;; Misc:
+
+(use-package eat
+  :bind
+  ((:map mode-specific-map  ("C-t" . eat))
+   (:map project-prefix-map ("t"   . eat-project))))
+
+(use-package bluetooth
+  :if (equal system-name "ossian-laptop"))
 
 (use-package filechooser
   :custom
   (filechooser-use-popup-frame nil))
 
 (use-package xdg-launcher
-  :vc
-  (:url "https://github.com/emacs-exwm/xdg-launcher.git" :rev "ca774d0"))
+  :vc (:url "https://github.com/emacs-exwm/xdg-launcher.git" :rev "ca774d0"))
 
 (use-package ednc
-  :demand t
-  :config
+  :init
   (ednc-mode +1))
 
-(use-package bluetooth
-  :if (equal system-name "ossian-laptop"))
-
 (use-package exwm
-  :demand t
   :if (eq window-system 'x)
+  :preface
+  (defun ossian/exwm-run-shell-command (cmd)
+    (interactive (list (read-shell-command "$ ")))
+    (start-process-shell-command cmd nil cmd))
+  (defun ossian/exwm-rename-buffer-by-class ()
+    (exwm-workspace-rename-buffer exwm-class-name))
+  (defun ossian/exwm-rename-buffer-by-title ()
+    (exwm-workspace-rename-buffer exwm-title))
   :custom
-  (exwm-input-global-keys
-   `(([?\s-r] . exwm-reset)
-     ([?\s-w] . exwm-workspace-switch)
-     ([?\s-7] . xdg-launcher-run-app)
-     ([?\s-&] . (lambda (cmd)
-		  (interactive (list (read-shell-command "$ ")))
-		  (start-process-shell-command cmd nil cmd)))))
-  (exwm-input-simulation-keys
-   '(;; char navigation
-     ([?\C-p]   . [up])
-     ([?\C-n]   . [down])
-     ([?\C-b]   . [left])
-     ([?\C-f]   . [right])
-     ([?\C-d]   . [delete])
-     ;; word navigation
-     ([?\M-b]   . [C-left])
-     ([?\M-f]   . [C-right])
-     ;; line navigation
-     ([?\C-a]   . [home])
-     ([?\C-e]   . [end])
-     ([?\C-k]   . [S-end delete])
-     ;; scroll
-     ([?\C-v]   . [next])
-     ([?\M-v]   . [prior])
-     ([?\C-w]   . [?\C-x])
-     ([?\M-w]   . [?\C-c])
-     ([?\C-y]   . [?\C-v])
-     ([?\C-s]   . [?\C-f])))
-  :config
+  (exwm-input-global-keys `(([?\s-r] . exwm-reset)
+			    ([?\s-w] . exwm-workspace-switch)
+			    ([?\s-7] . xdg-launcher-run-app)
+			    ([?\s-&] . ossian/exwm-run-shell-command)))
+  (exwm-input-simulation-keys '(;; char navigation
+				([?\C-p]   . [up])
+				([?\C-n]   . [down])
+				([?\C-b]   . [left])
+				([?\C-f]   . [right])
+				([?\C-d]   . [delete])
+				;; word navigation
+				([?\M-b]   . [C-left])
+				([?\M-f]   . [C-right])
+				;; line navigation
+				([?\C-a]   . [home])
+				([?\C-e]   . [end])
+				([?\C-k]   . [S-end delete])
+				;; scroll
+				([?\C-v]   . [next])
+				([?\M-v]   . [prior])
+				([?\C-w]   . [?\C-x])
+				([?\M-w]   . [?\C-c])
+				([?\C-y]   . [?\C-v])
+				([?\C-s]   . [?\C-f])))
+  :init
   (exwm-wm-mode +1)
   :hook
-  (exwm-update-class . (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
-  (exwm-update-title . (lambda () (exwm-workspace-rename-buffer exwm-title))))
+  (exwm-update-class . ossian/exwm-rename-buffer-by-class)
+  (exwm-update-title . ossian/exwm-rename-buffer-by-title))
 
 (provide 'init)
 ;;; init.el ends here
