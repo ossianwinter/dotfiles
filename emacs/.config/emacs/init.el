@@ -116,6 +116,27 @@
   :config
   (auth-source-pass-enable))
 
+(use-package gnus
+  :ensure nil
+  :custom
+  (gnus-select-method
+   '(nnimap "bridge"
+	    (nnimap-address "127.0.0.1")
+	    (nnimap-server-port 1143)
+	    (nnimap-stream starttls))))
+
+(use-package smtpmail
+  :ensure nil
+  :custom
+  (smtpmail-smtp-server "127.0.0.1")
+  (smtpmail-smtp-service 1025)
+  (smtpmail-stream-type 'starttls))
+
+(use-package message
+  :ensure nil
+  :custom
+  (message-send-mail-function 'smtpmail-send-it))
+
 (use-package package
   :ensure nil
   :custom
