@@ -105,6 +105,11 @@
   :custom
   (epg-pinentry-mode 'loopback))
 
+(use-package auth-source
+  :ensure nil
+  :custom
+  (auth-sources '("~/.authinfo.gpg")))
+
 (use-package auth-source-pass
   :ensure nil
   :demand t
