@@ -70,6 +70,8 @@
 
 ;;;; Editing:
 
+(setq-default indent-tabs-mode nil)
+
 (setopt org-default-notes-file                "~/org/notes.org"
 	org-agenda-files                      '("~/org/notes.org")
 	org-agenda-window-setup               'current-window
