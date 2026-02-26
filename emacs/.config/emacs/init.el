@@ -58,6 +58,10 @@
   :init
   (modus-themes-load-theme 'ef-autumn))
 
+(use-package minions
+  :init
+  (minions-mode +1))
+
 ;;;; Buffers:
 
 (setopt quit-window-kill-buffer t)
