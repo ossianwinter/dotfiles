@@ -86,7 +86,7 @@
   ((:map global-map        ("C->" . mc/mark-next-like-this))
    (:map global-map        ("C-<" . mc/mark-previous-like-this))
    (:map mode-specific-map ("C->" . mc/mark-all-like-this))
-   (:map mode-specific-map ("C->" . mc/mark-all-like-this))))
+   (:map mode-specific-map ("C-<" . mc/mark-all-like-this))))
 
 ;;;; Navigation:
 
