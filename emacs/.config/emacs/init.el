@@ -88,6 +88,8 @@
 
 ;;;; Navigation:
 
+(repeat-mode +1)
+
 (use-package consult
   :custom
   (xref-show-xrefs-function       #'consult-xref)
