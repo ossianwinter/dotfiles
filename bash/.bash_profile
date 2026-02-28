@@ -1,6 +1,8 @@
 #!/bin/bash
 [ -f ~/.bashrc ] && . ~/.bashrc
 
+[ -d "${HOME}/.cargo" ] && source "${HOME}/.cargo/env"
+
 [ -d "${HOME}/opt/go1.26.0" ] && export GOROOT="${HOME}/opt/go1.26.0"
 [ -d "${HOME}/opt/go" ] && export GOPATH="${HOME}/opt/go"
 [ -d "${GOROOT}" ] && export PATH="${GOROOT}/bin:${PATH}"
