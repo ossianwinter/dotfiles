@@ -191,6 +191,21 @@
   :init
   (global-corfu-mode +1))
 
+;;;; Programming:
+
+(defun ossian/eglot-format-buffer-before-save ()
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
+
+;;;;; Rust:
+
+(add-hook 'rust-ts-mode-hook #'eglot-ensure)
+(add-hook 'rust-ts-mode-hook #'ossian/eglot-format-buffer-before-save)
+
+;;;;; Go:
+
+(add-hook 'go-ts-mode-hook #'eglot-ensure)
+(add-hook 'go-ts-mode-hook #'ossian/eglot-format-buffer-before-save)
+
 ;;;; Misc:
 
 (use-package eat
