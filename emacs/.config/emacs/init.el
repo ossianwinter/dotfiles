@@ -43,6 +43,9 @@
 
 ;;;; Appearance:
 
+(set-face-attribute 'default nil :family "Berkeley Mono")
+(set-fontset-font t 'symbol "Symbola")
+
 (blink-cursor-mode -1)
 
 (setopt display-time-default-load-average nil)

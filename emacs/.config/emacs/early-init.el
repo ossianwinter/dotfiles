@@ -29,7 +29,5 @@
 (push '(vertical-scroll-bars) default-frame-alist)
 (setq scroll-bar-mode nil)
 
-(add-to-list 'default-frame-alist '(font . "Berkeley Mono-16"))
-
 (provide 'early-init)
 ;;; early-init.el ends here
