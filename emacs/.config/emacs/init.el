@@ -211,10 +211,19 @@
 
 ;;;; Misc:
 
-(use-package eat
+(use-package vterm
+  :preface
+  (defun ossian/vterm-dwim (&optional arg)
+    (interactive)
+    (let ((project (project-current)))
+      (if project
+          (let* ((root (project-root project))
+                 (default-directory root)
+                 (vterm-buffer-name (format "*vterm:%s*" (abbreviate-file-name root))))
+            (vterm arg))
+        (vterm arg))))
   :bind
-  ((:map mode-specific-map  ("C-t" . eat))
-   (:map project-prefix-map ("t"   . eat-project))))
+  ((:map global-map ("s-<return>" . ossian/vterm-dwim))))
 
 (use-package bluetooth
   :if (equal system-name "ossian-laptop"))
