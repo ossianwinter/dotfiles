@@ -1,0 +1,23 @@
+{
+    "default": [
+        {
+            "type": "reject"
+        }
+    ],
+    "transports": {
+        "docker": {
+            "docker.io/library": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "docker-daemon": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        }
+    }
+}

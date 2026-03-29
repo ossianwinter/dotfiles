@@ -1,0 +1,145 @@
+;;; init.el --- À la carte -*- lexical-binding: t; -*-
+
+;; Author: Ossian Winter <ossian@winter.vg>
+;; URL: https://github.com/ossianwinter/dotfiles
+
+;;; Commentary:
+
+;; À la carte.
+
+;;; Code:
+
+;;;; Core:
+
+(unless (bound-and-true-p server-process) (server-start))
+
+(setopt user-full-name "Ossian Winter"
+	user-mail-address "ossian@winter.vg")
+
+(set-language-environment "UTF-8")
+(setopt default-input-method nil)
+
+(setopt use-dialog-box nil)
+
+(setopt gc-cons-threshold (* 32 (* 1024 1024))
+	read-process-output-max (* 1024 1024))
+
+(setopt package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+			   ("melpa" . "https://melpa.org/packages/"))
+	package-archive-priorities '(("gnu" . 90)
+				     ("nongnu" . 80)
+				     ("melpa" . 70)))
+
+(setopt use-package-expand-minimally t)
+
+;;;; Appearance:
+
+(blink-cursor-mode -1)
+
+(setopt modus-themes-include-derivatives-mode t
+	modus-themes-mixed-fonts t)
+
+(use-package ef-themes :ensure t)
+
+(use-package darkman :ensure t
+  :after ef-themes
+  :custom (darkman-themes '( :light ef-orange
+		             :dark ef-autumn))
+  :init (darkman-mode +1))
+
+(use-package fontaine :ensure t
+  :custom (fontaine-presets
+           '((regular)
+             (t
+              :default-family "IBM Plex Mono"
+              :default-weight regular
+              :default-height 120
+
+              :fixed-pitch-family nil ; fallback to :default-family
+              :fixed-pitch-weight nil ; fallback to :default-weight
+              :fixed-pitch-height 1.0
+
+              :variable-pitch-family "IBM Plex Sans"
+              :variable-pitch-weight nil ; fallback to :default-weight
+              :variable-pitch-height 1.0)))
+  :init
+  (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
+  (fontaine-mode +1))
+
+(set-fontset-font t 'symbol "JuliaMono")
+(set-fontset-font t 'symbol "Symbola" nil 'append)
+
+;;;; Completion:
+
+;;;; Minibuffer:
+
+(setopt enable-recursive-minibuffers t)
+
+(use-package vertico :ensure t
+  :init (vertico-mode +1))
+
+(use-package marginalia :ensure t
+  :init (marginalia-mode +1))
+
+;;;; Navigation:
+
+(repeat-mode +1)
+
+(use-package consult :ensure t
+  :custom ( xref-show-xrefs-function #'consult-xref
+            xref-show-definitions-function #'consult-xref)
+  :bind ( :map global-map ("M-y" . consult-yank-pop)
+          :map goto-map ("g" . consult-goto-line)
+          :map goto-map ("M-g" . consult-goto-line)
+          :map search-map ("g" . consult-grep)
+          :map search-map ("f" . consult-find)
+          :map ctl-x-map ("b" . consult-buffer)))
+
+;;;; Editing:
+
+(setq-default indent-tabs-mode nil)
+
+(use-package vundo :ensure t
+  :bind ( :map ctl-x-map ("u" . vundo)))
+
+;;;; Files:
+
+(setopt make-backup-files nil)
+
+;; `find-file' follows links
+(setopt find-file-visit-truename t)
+
+;;;; Mail:
+
+(setopt send-mail-function 'sendmail-send-it)
+
+(use-package mu4e
+  :custom
+  (mail-user-agent 'mu4e-user-agent)
+  (read-mail-command 'mu4e)
+  (mu4e-contexts
+   `( ,(make-mu4e-context
+        :name "Personal"
+        :match-func (lambda (msg)
+                      (when msg
+                        (string-prefix-p "/personal/" (mu4e-message-field msg :maildir))))
+        :vars '((user-mail-address . "ossian@winter.vg")
+                (user-full-name . "Ossian Winter")
+                (mu4e-get-mail-command . "mbsync personal")))))
+  (mu4e-sent-folder "/Sent")
+  (mu4e-trash-folder "/Trash")
+  (mu4e-drafts-folder "/Drafts")
+  (mu4e-refile-folder "/Archive")
+  (mu4e-get-mail-command "mbsync --all"))
+
+;;;; Misc:
+
+(use-package magit :ensure t
+  :init (with-eval-after-load 'project
+          (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
+  :bind ( :map ctl-x-map ("g" . magit-status)
+          :map project-prefix-map ("m" . magit-project-status)))
+
+(provide 'init)
+;;; init.el ends here

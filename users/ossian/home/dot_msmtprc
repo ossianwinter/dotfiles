@@ -1,0 +1,10 @@
+account      personal
+host         smtp.fastmail.com
+auth         on
+user         ossian@fastmail.com
+passwordeval "op item get i7o5bqrpenxguh5psiaave5k7m --fields=credential --reveal"
+tls          on
+tls_starttls off
+from         Ossian Winter <ossian@winter.vg>
+
+account default: personal
