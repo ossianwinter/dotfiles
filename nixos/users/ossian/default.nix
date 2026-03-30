@@ -13,7 +13,6 @@ in
     description = "Ossian Winter";
     packages = with pkgs; [
       chezmoi
-      alacritty
       myEmacs
       jetbrains.idea
       claude-code
