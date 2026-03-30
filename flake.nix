@@ -1,12 +1,21 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
   outputs =
-    { nixpkgs, ... }:
+    { nixpkgs, home-manager, ... }:
     {
       nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
         modules = [
           ./nixos/systems/workstation
+          ./nixos/users/ossian
+          { users.users.ossian.extraGroups = [ "wheel" ]; }
+
           ./nixos/1password.nix
           ./nixos/audio.nix
           ./nixos/darkman.nix
@@ -17,8 +26,15 @@
           ./nixos/gnome-keyring.nix
           ./nixos/steam.nix
           ./nixos/sway.nix
-          ./nixos/users/ossian
-          { users.users.ossian.extraGroups = [ "wheel" ]; }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.ossian = ./home/ossian;
+            };
+          }
         ];
       };
     };
