@@ -7,14 +7,14 @@
 {
   programs.sway = {
     enable = true;
-    wrapperFeatures.gtk = true;
+    wrapperFeatures.gtk = lib.mkDefault true;
   };
 
   # required by wlr portal
   services.pipewire.enable = true;
 
   # polkit is (mostly) useless without an agent
-  systemd.user.services.polkit-gnome-authentication-agent-1 = lib.mkIf config.security.polkit.enable {
+  systemd.user.services.polkit-gnome-authentication-agent-1 = lib.mkIf config.security.polkit.enable (lib.mkDefault {
     description = "polkit-gnome-authentication-agent-1";
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
@@ -26,5 +26,5 @@
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
-  };
+  });
 }
