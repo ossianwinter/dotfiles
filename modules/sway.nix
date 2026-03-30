@@ -10,17 +10,6 @@
     wrapperFeatures.gtk = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-    config.sway = {
-      default = [ "gtk" ];
-      "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-    };
-  };
-
   # required by wlr portal
   services.pipewire.enable = true;
 
