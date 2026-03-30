@@ -22,7 +22,6 @@
           ./nixos/email.nix
           ./nixos/firefox.nix
           ./nixos/fonts.nix
-          ./nixos/git.nix
           ./nixos/gnome-keyring.nix
           ./nixos/steam.nix
           ./nixos/sway.nix
