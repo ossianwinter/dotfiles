@@ -6,7 +6,7 @@
     {
       nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
         modules = [
-          ./machines/workstation
+          ./nixos/systems/workstation
           ./nixos/1password.nix
           ./nixos/audio.nix
           ./nixos/darkman.nix
