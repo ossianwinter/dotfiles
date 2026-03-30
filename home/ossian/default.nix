@@ -2,6 +2,7 @@
 {
   imports = [
     ./darkman.nix
+    ./email.nix
   ];
 
   programs.git = {
