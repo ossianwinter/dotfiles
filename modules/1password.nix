@@ -1,7 +1,6 @@
 { config, lib, ... }:
 let
-  # TODO: This should be centralized somewhere.
-  graphical = config.programs.sway.enable;
+  graphical = config.services.graphical-desktop.enable;
 in
 {
   programs._1password.enable = true;
