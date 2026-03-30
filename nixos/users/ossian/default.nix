@@ -29,7 +29,4 @@ in
       }
     });
   '';
-
-  # Required for darkman scripts
-  programs.dconf.enable = true;
 }

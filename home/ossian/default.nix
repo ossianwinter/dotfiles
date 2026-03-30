@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./darkman.nix
+  ];
+
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
