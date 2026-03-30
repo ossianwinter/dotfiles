@@ -7,4 +7,8 @@
       lib.mkDefault [ "gnome-keyring" ]
     );
   };
+
+  services.gnome.gcr-ssh-agent.enable = lib.mkIf config.programs._1password-gui.enable (
+    lib.mkDefault false
+  );
 }
