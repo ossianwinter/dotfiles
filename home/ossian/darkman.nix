@@ -2,6 +2,10 @@
 {
   services.darkman = {
     enable = true;
+    settings = {
+      lat = 57.7;
+      lng = 11.9;
+    };
 
     darkModeScripts = {
       gtk-theme = ''
