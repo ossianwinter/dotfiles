@@ -18,7 +18,6 @@
 
           ./nixos/1password.nix
           ./nixos/audio.nix
-          ./nixos/fonts.nix
           ./nixos/gnome-keyring.nix
           ./nixos/steam.nix
           ./nixos/sway.nix

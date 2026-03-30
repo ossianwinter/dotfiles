@@ -3,6 +3,7 @@
   imports = [
     ./darkman.nix
     ./email.nix
+    ./fonts.nix
   ];
 
   programs = {
