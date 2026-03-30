@@ -15,6 +15,7 @@
           ./modules/fonts.nix
           ./modules/git.nix
           ./modules/gnome-keyring.nix
+          ./modules/steam.nix
           ./modules/sway.nix
           ./users/ossian
           { users.users.ossian.extraGroups = [ "wheel" ]; }
