@@ -55,6 +55,11 @@
         "dmask=0077"
       ];
     };
+
+    "/mnt/samsung-870" = {
+      device = "/dev/disk/by-uuid/83f38485-57f5-4dca-a493-040c63f13022";
+      fsType = "ext4";
+    };
   };
 
   time.timeZone = "Europe/Stockholm";
