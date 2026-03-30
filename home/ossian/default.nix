@@ -4,6 +4,7 @@
     ./darkman.nix
     ./email.nix
     ./fonts.nix
+    ./keyring.nix
   ];
 
   programs = {
