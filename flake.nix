@@ -17,7 +17,7 @@
           ./nixos/gnome-keyring.nix
           ./nixos/steam.nix
           ./nixos/sway.nix
-          ./users/ossian
+          ./nixos/users/ossian
           { users.users.ossian.extraGroups = [ "wheel" ]; }
         ];
       };
