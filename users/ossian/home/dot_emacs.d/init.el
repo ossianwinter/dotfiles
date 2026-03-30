@@ -135,6 +135,20 @@
 
 ;;;; Misc:
 
+(use-package vterm
+  ;; https://mocompute.codeberg.page/item/2024/2024-09-03-emacs-project-vterm.html
+  :preface (defun ossian/project-shell ()
+             (interactive)
+             (let* ((default-directory (project-root (project-current t)))
+                    (default-project-shell-name (project-prefixed-buffer-name "shell"))
+                    (shell-buffer (get-buffer default-project-shell-name)))
+               (if (and shell-buffer (not current-prefix-arg))
+                   (if (comint-check-proc shell-buffer)
+                       (pop-to-buffer shell-buffer (bound-and-true-p display-comint-buffer-action))
+                     (vterm shell-buffer))
+                 (vterm (generate-new-buffer-name default-project-shell-name)))))
+  :config (advice-add 'project-shell :override #'ossian/project-shell))
+
 (use-package magit :ensure t
   :init (with-eval-after-load 'project
           (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
