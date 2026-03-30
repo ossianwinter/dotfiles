@@ -1,19 +1,10 @@
 { pkgs, ... }:
-let
-  myEmacs = (
-    (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [
-      epkgs.mu4e
-      epkgs.vterm
-    ])
-  );
-in
 {
   users.users.ossian = {
     isNormalUser = true;
     description = "Ossian Winter";
     packages = with pkgs; [
       chezmoi
-      myEmacs
       jetbrains.idea
       claude-code
       codex

@@ -2,6 +2,7 @@
 {
   imports = [
     ./darkman.nix
+    ./emacs.nix
     ./email.nix
     ./fonts.nix
     ./keyring.nix
