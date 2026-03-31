@@ -9,6 +9,16 @@
     ./sway.nix
   ];
 
+  services.wlsunset = {
+    enable = true;
+    latitude = 57.7;
+    longitude = 11.9;
+    temperature = {
+      day = 5000;
+      night = 4000;
+    };
+  };
+
   programs = {
     firefox.enable = true;
 
