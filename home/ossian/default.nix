@@ -6,6 +6,7 @@
     ./email.nix
     ./fonts.nix
     ./keyring.nix
+    ./sway.nix
   ];
 
   programs = {

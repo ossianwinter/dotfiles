@@ -62,6 +62,8 @@
     };
   };
 
+  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
+
   time.timeZone = "Europe/Stockholm";
 
   networking = {

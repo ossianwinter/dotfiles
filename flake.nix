@@ -19,7 +19,6 @@
           ./nixos/1password.nix
           ./nixos/audio.nix
           ./nixos/steam.nix
-          ./nixos/sway.nix
 
           home-manager.nixosModules.home-manager
           {
