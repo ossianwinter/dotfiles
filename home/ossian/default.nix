@@ -10,13 +10,17 @@
     ./sway.nix
   ];
 
-  services.wlsunset = {
-    enable = true;
-    latitude = 57.7;
-    longitude = 11.9;
-    temperature = {
-      day = 5000;
-      night = 3500;
+  services = {
+    mako.enable = true;
+
+    wlsunset = {
+      enable = true;
+      latitude = 57.7;
+      longitude = 11.9;
+      temperature = {
+        day = 5000;
+        night = 3500;
+      };
     };
   };
 
