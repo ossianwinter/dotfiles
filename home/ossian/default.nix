@@ -4,6 +4,7 @@
     ./darkman.nix
     ./emacs.nix
     ./email.nix
+    ./firefox.nix
     ./fonts.nix
     ./keyring.nix
     ./sway.nix
@@ -20,8 +21,6 @@
   };
 
   programs = {
-    firefox.enable = true;
-
     git = {
       enable = true;
       package = pkgs.gitFull;
