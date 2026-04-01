@@ -108,25 +108,6 @@
 
 (setopt send-mail-function 'sendmail-send-it)
 
-(use-package mu4e :ensure t
-  :custom
-  (mail-user-agent 'mu4e-user-agent)
-  (read-mail-command 'mu4e)
-  (mu4e-contexts
-   `( ,(make-mu4e-context
-        :name "Personal"
-        :match-func (lambda (msg)
-                      (when msg
-                        (string-prefix-p "/personal/" (mu4e-message-field msg :maildir))))
-        :vars '((user-mail-address . "ossian@winter.vg")
-                (user-full-name . "Ossian Winter")
-                (mu4e-get-mail-command . "mbsync personal")))))
-  (mu4e-sent-folder "/Sent")
-  (mu4e-trash-folder "/Trash")
-  (mu4e-drafts-folder "/Drafts")
-  (mu4e-refile-folder "/Archive")
-  (mu4e-get-mail-command "mbsync --all"))
-
 (use-package gnus
   :custom
   (gnus-select-method '(nnnil ""))

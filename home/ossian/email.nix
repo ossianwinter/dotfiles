@@ -16,15 +16,10 @@
     };
 
     msmtp.enable = true;
-
-    mu.enable = true;
   };
 
   programs = {
     mbsync.enable = true;
     msmtp.enable = true;
-    mu.enable = true;
-
-    emacs.extraPackages = epkgs: [ epkgs.mu4e ];
   };
 }
