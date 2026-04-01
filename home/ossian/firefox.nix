@@ -1,6 +1,8 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   programs.firefox.enable = true;
+
+  home.packages = with pkgs; [ xdg-utils ];
 
   xdg.mimeApps = {
     enable = true;
