@@ -136,8 +136,7 @@
     (pcase `(,host ,user)
       (`(,(or `(,_ "imap.fastmail.com") "smtp.fastmail.com") "ossian@fastmail.com")
        "Personal/i7o5bqrpenxguh5psiaave5k7m/credential")
-      (`(,(and (pred stringp) host)
-         ,(and (pred stringp) user))
+      (`(,(pred stringp) ,(pred stringp))
        (auth-source-1password--1password-construct-entry-path
         backend type host user port))
       (_ nil)))
