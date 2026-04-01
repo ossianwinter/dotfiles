@@ -106,7 +106,15 @@
 
 ;;;; Mail:
 
-(setopt send-mail-function 'sendmail-send-it)
+(use-package message
+  :custom (message-send-mail-function 'smtpmail-send-it))
+
+(use-package smtpmail
+  :custom
+  (smtpmail-smtp-server "smtp.fastmail.com")
+  (smtpmail-smtp-service 465)
+  (smtpmail-smtp-user "ossian@fastmail.com")
+  (smtpmail-stream-type 'ssl))
 
 (use-package gnus
   :custom
@@ -126,7 +134,7 @@
   (defun ossian/auth-source-1password--construct-secret-reference
       (backend type host user port)
     (pcase `(,host ,user)
-      (`((,_ "imap.fastmail.com") "ossian@fastmail.com")
+      (`(,(or `(,_ "imap.fastmail.com") "smtp.fastmail.com") "ossian@fastmail.com")
        "Personal/i7o5bqrpenxguh5psiaave5k7m/credential")
       (`(,(and (pred stringp) host)
          ,(and (pred stringp) user))
