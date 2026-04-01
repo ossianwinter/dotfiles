@@ -24,14 +24,9 @@
 (setopt gc-cons-threshold (* 32 (* 1024 1024))
 	read-process-output-max (* 1024 1024))
 
-(setopt package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-			   ("melpa" . "https://melpa.org/packages/"))
-	package-archive-priorities '(("gnu" . 90)
-				     ("nongnu" . 80)
-				     ("melpa" . 70)))
-
-(setopt use-package-expand-minimally t)
+(defun ossian/use-package-ensure-noop (&rest _) t)
+(setopt use-package-ensure-function #'ossian/use-package-ensure-noop
+        use-package-expand-minimally t)
 
 ;;;; Appearance:
 
@@ -43,10 +38,9 @@
 (use-package ef-themes :ensure t)
 
 (use-package darkman :ensure t
-  :after ef-themes
   :custom (darkman-themes '( :light ef-orange
 		             :dark ef-autumn))
-  :init (darkman-mode +1))
+  :config (darkman-mode +1))
 
 (use-package fontaine :ensure t
   :custom (fontaine-presets
@@ -63,7 +57,7 @@
               :variable-pitch-family "IBM Plex Sans"
               :variable-pitch-weight nil ; fallback to :default-weight
               :variable-pitch-height 1.0)))
-  :init
+  :config
   (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
   (fontaine-mode +1))
 
@@ -77,10 +71,10 @@
 (setopt enable-recursive-minibuffers t)
 
 (use-package vertico :ensure t
-  :init (vertico-mode +1))
+  :config (vertico-mode +1))
 
 (use-package marginalia :ensure t
-  :init (marginalia-mode +1))
+  :config (marginalia-mode +1))
 
 ;;;; Navigation:
 
@@ -101,7 +95,7 @@
 (setq-default indent-tabs-mode nil)
 
 (use-package vundo :ensure t
-  :bind ( :map ctl-x-map ("u" . vundo)))
+  :bind (:map ctl-x-map ("u" . vundo)))
 
 ;;;; Files:
 
@@ -114,7 +108,7 @@
 
 (setopt send-mail-function 'sendmail-send-it)
 
-(use-package mu4e
+(use-package mu4e :ensure t
   :custom
   (mail-user-agent 'mu4e-user-agent)
   (read-mail-command 'mu4e)
@@ -135,7 +129,7 @@
 
 ;;;; Misc:
 
-(use-package vterm
+(use-package vterm :ensure t
   ;; https://mocompute.codeberg.page/item/2024/2024-09-03-emacs-project-vterm.html
   :preface (defun ossian/project-shell ()
              (interactive)

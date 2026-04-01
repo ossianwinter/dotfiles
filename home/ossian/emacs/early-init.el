@@ -9,6 +9,8 @@
 
 ;;; Code:
 
+(setopt package-enable-at-startup nil)
+
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
 (setq frame-inhibit-implied-resize t)

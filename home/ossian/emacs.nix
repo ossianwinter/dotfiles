@@ -2,8 +2,10 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-pgtk;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    package = pkgs.emacsWithPackagesFromUsePackage {
+      config = ./emacs/init.el;
+      package = pkgs.emacs-pgtk;
+    };
   };
 
   xdg.configFile."emacs" = {
