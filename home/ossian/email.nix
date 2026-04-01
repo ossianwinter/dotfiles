@@ -14,12 +14,9 @@
       remove = "both";
       expunge = "both";
     };
-
-    msmtp.enable = true;
   };
 
   programs = {
     mbsync.enable = true;
-    msmtp.enable = true;
   };
 }
