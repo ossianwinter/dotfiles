@@ -127,6 +127,17 @@
   (mu4e-refile-folder "/Archive")
   (mu4e-get-mail-command "mbsync --all"))
 
+(use-package gnus
+  :custom
+  (gnus-select-method '(nnnil ""))
+  (gnus-secondary-select-methods
+   '((nntp "Gmane"
+           (nntp-address "news.gmane.io"))
+     (nnimap "Personal"
+             (nnimap-address "imap.fastmail.com")
+             (nnimap-user "ossian@fastmail.com")
+             (nnimap-stream tls)))))
+
 ;;;; Misc:
 
 (use-package auth-source-1password :ensure t
