@@ -11,7 +11,8 @@
 
 (setopt package-enable-at-startup nil)
 
-(setq custom-file (locate-user-emacs-file "custom.el"))
+(setopt custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file)
 
 (setq frame-inhibit-implied-resize t)
 (setq inhibit-compacting-font-caches t)
