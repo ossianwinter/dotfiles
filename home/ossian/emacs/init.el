@@ -129,6 +129,21 @@
 
 ;;;; Misc:
 
+(use-package auth-source-1password :ensure t
+  :preface
+  (defun ossian/auth-source-1password--construct-secret-reference
+      (backend type host user port)
+    (pcase `(,host ,user)
+      (`((,_ "imap.fastmail.com") "ossian@fastmail.com")
+       "Personal/i7o5bqrpenxguh5psiaave5k7m/credential")
+      (`(,(and (pred stringp) host)
+         ,(and (pred stringp) user))
+       (auth-source-1password--1password-construct-entry-path
+        backend type host user port))
+      (_ nil)))
+  :custom (auth-source-1password-construct-secret-reference #'ossian/auth-source-1password--construct-secret-reference)
+  :config (auth-source-1password-enable))
+
 (use-package vterm :ensure t
   ;; https://mocompute.codeberg.page/item/2024/2024-09-03-emacs-project-vterm.html
   :preface (defun ossian/project-shell ()
