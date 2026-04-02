@@ -66,7 +66,7 @@
 
 (use-package darkman
   :ensure t
-  :custom (darkman-themes '(:light tango :dark tango-dark))
+  :custom (darkman-themes '(:light leuven :dark leuven-dark))
   :init (darkman-mode +1))
 
 ;;;; Completion:
