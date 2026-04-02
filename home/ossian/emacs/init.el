@@ -32,10 +32,6 @@
 
 (blink-cursor-mode -1)
 
-(setopt modus-themes-include-derivatives-mode t
-	modus-themes-mixed-fonts t)
-
-(use-package ef-themes :ensure t)
 
 (use-package darkman :ensure t
   :custom (darkman-themes '( :light tango
