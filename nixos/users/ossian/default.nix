@@ -3,9 +3,6 @@
   users.users.ossian = {
     isNormalUser = true;
     description = "Ossian Winter";
-    packages = with pkgs; [
-      chezmoi
-    ];
   };
 
   programs._1password-gui.polkitPolicyOwners = [ "ossian" ];
