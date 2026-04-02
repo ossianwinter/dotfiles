@@ -25,6 +25,7 @@ in
     enable = true;
     package = pkgs.ungoogled-chromium;
     commandLineArgs = [
+      "--enable-features=ClearDataOnExit"
       "--omnibox-autocomplete-filtering=search"
       "--show-avatar-button=never"
     ];
