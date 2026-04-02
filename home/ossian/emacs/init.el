@@ -32,30 +32,18 @@
 
 (blink-cursor-mode -1)
 
-
 (use-package darkman :ensure t
   :custom (darkman-themes '( :light tango
 		             :dark tango-dark))
   :config (darkman-mode +1))
 
-(use-package fontaine :ensure t
-  :custom (fontaine-presets
-           '((regular)
-             (t
-              :default-family "IBM Plex Mono"
-              :default-weight regular
-              :default-height 120
-
-              :fixed-pitch-family nil ; fallback to :default-family
-              :fixed-pitch-weight nil ; fallback to :default-weight
-              :fixed-pitch-height 1.0
-
-              :variable-pitch-family "IBM Plex Sans"
-              :variable-pitch-weight nil ; fallback to :default-weight
-              :variable-pitch-height 1.0)))
+(use-package faces
   :config
-  (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
-  (fontaine-mode +1))
+  (set-face-attribute 'default nil
+                      :family "IBM Plex Mono"
+                      :height 120)
+  (set-face-attribute 'variable-pitch nil
+                      :family "IBM Plex Sans"))
 
 (set-fontset-font t 'symbol "JuliaMono")
 (set-fontset-font t 'symbol "Symbola" nil 'append)
