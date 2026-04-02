@@ -56,7 +56,7 @@
   :init
   (set-face-attribute 'default nil
                       :family "IBM Plex Mono"
-                      :height 120)
+                      :height 140)
   (set-face-attribute 'variable-pitch nil
                       :family "IBM Plex Sans"))
 
