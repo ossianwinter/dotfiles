@@ -26,6 +26,7 @@ in
     package = pkgs.ungoogled-chromium;
     commandLineArgs = [
       "--enable-features=ClearDataOnExit"
+      "--enable-blink-features=MiddleClickAutoscroll"
       "--omnibox-autocomplete-filtering=search"
       "--show-avatar-button=never"
     ];
