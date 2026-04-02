@@ -11,34 +11,49 @@
 
 ;;;; Core:
 
-(unless (bound-and-true-p server-process) (server-start))
+(use-package use-package
+  :preface
+  (defun ossian/use-package-ensure-noop (&rest _) t)
+  :custom
+  (use-package-ensure-function #'ossian/use-package-ensure-noop)
+  (use-package-expand-minimally t)
+  (use-package-always-defer t))
 
-(setopt user-full-name "Ossian Winter"
-	user-mail-address "ossian@winter.vg")
+(use-package alloc
+  :custom (gc-cons-threshold (* 32 (* 1024 1024))))
 
-(set-language-environment "UTF-8")
-(setopt default-input-method nil)
+(use-package process
+  :custom (read-process-output-max (* 1024 1024)))
 
-(setopt use-dialog-box nil)
+(use-package fns
+  :custom (use-dialog-box nil))
 
-(setopt gc-cons-threshold (* 32 (* 1024 1024))
-	read-process-output-max (* 1024 1024))
+(use-package startup
+  :custom
+  (user-full-name "Ossian Winter")
+  (user-mail-address "ossian@winter.vg"))
 
-(defun ossian/use-package-ensure-noop (&rest _) t)
-(setopt use-package-ensure-function #'ossian/use-package-ensure-noop
-        use-package-expand-minimally t)
+(use-package server
+  :preface
+  (unless (fboundp #'server-running-p)
+    (autoload #'server-running-p "server" nil t))
+  :unless (server-running-p)
+  :init (server-start))
+
+(use-package mule-cmds
+  :init
+  (set-language-environment "UTF-8")
+  (setopt default-input-method nil))
 
 ;;;; Appearance:
 
-(blink-cursor-mode -1)
-
-(use-package darkman :ensure t
-  :custom (darkman-themes '( :light tango
-		             :dark tango-dark))
-  :config (darkman-mode +1))
+(use-package frame
+  :if (display-graphic-p)
+  :init (blink-cursor-mode -1))
 
 (use-package faces
-  :config
+  :if (display-graphic-p)
+  :init
   (set-face-attribute 'default nil
                       :family "IBM Plex Mono"
                       :height 120)
@@ -46,48 +61,63 @@
                       :family "IBM Plex Sans"))
 
 (use-package fontset
-  :config
-  (set-fontset-font t 'symbol "Symbola"))
+  :if (display-graphic-p)
+  :init (set-fontset-font t 'symbol "Symbola"))
+
+(use-package darkman
+  :ensure t
+  :custom (darkman-themes '(:light tango :dark tango-dark))
+  :init (darkman-mode +1))
 
 ;;;; Completion:
 
 ;;;; Minibuffer:
 
-(setopt enable-recursive-minibuffers t)
+(use-package minibuf
+  :custom (enable-recursive-minibuffers t))
 
-(use-package vertico :ensure t
-  :config (vertico-mode +1))
+(use-package vertico
+  :ensure t
+  :init (vertico-mode +1))
 
-(use-package marginalia :ensure t
-  :config (marginalia-mode +1))
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode +1))
 
 ;;;; Navigation:
 
-(repeat-mode +1)
+(use-package repeat
+  :init (repeat-mode +1))
 
-(use-package consult :ensure t
-  :custom ( xref-show-xrefs-function #'consult-xref
-            xref-show-definitions-function #'consult-xref)
-  :bind ( :map global-map ("M-y" . consult-yank-pop)
-          :map goto-map ("g" . consult-goto-line)
-          :map goto-map ("M-g" . consult-goto-line)
-          :map search-map ("g" . consult-grep)
-          :map search-map ("f" . consult-find)
-          :map ctl-x-map ("b" . consult-buffer)))
+(use-package consult
+  :ensure t
+  :custom
+  (xref-show-xrefs-function #'consult-xref)
+  (xref-show-definitions-function #'consult-xref)
+  :bind (("M-y" . consult-yank-pop)
+         :map goto-map
+         ("g" . consult-goto-line)
+         ("M-g" . consult-goto-line)
+         :map search-map
+         ("g" . consult-grep)
+         ("f" . consult-find)
+         :map ctl-x-map ("b" . consult-buffer)))
 
 ;;;; Editing:
 
-(setq-default indent-tabs-mode nil)
+(use-package simple
+  :custom (indent-tabs-mode nil))
 
-(use-package vundo :ensure t
-  :bind (:map ctl-x-map ("u" . vundo)))
+(use-package vundo
+  :ensure t
+  :bind ( :map ctl-x-map ("u" . vundo)))
 
 ;;;; Files:
 
-(setopt make-backup-files nil)
-
-;; `find-file' follows links
-(setopt find-file-visit-truename t)
+(use-package files
+  :custom
+  (make-backup-files nil)
+  (find-file-visit-truename t))
 
 ;;;; Mail:
 
@@ -114,7 +144,8 @@
 
 ;;;; Misc:
 
-(use-package auth-source-1password :ensure t
+(use-package auth-source-1password
+  :ensure t
   :preface
   (defun ossian/auth-source-1password--construct-secret-reference
       (backend type host user port)
@@ -126,27 +157,31 @@
         backend type host user port))
       (_ nil)))
   :custom (auth-source-1password-construct-secret-reference #'ossian/auth-source-1password--construct-secret-reference)
-  :config (auth-source-1password-enable))
+  :commands auth-source-1password-enable
+  :init (auth-source-1password-enable))
 
-(use-package vterm :ensure t
-  ;; https://mocompute.codeberg.page/item/2024/2024-09-03-emacs-project-vterm.html
-  :preface (defun ossian/project-shell ()
-             (interactive)
-             (let* ((default-directory (project-root (project-current t)))
-                    (default-project-shell-name (project-prefixed-buffer-name "shell"))
-                    (shell-buffer (get-buffer default-project-shell-name)))
-               (if (and shell-buffer (not current-prefix-arg))
-                   (if (comint-check-proc shell-buffer)
-                       (pop-to-buffer shell-buffer (bound-and-true-p display-comint-buffer-action))
-                     (vterm shell-buffer))
-                 (vterm (generate-new-buffer-name default-project-shell-name)))))
-  :config (advice-add 'project-shell :override #'ossian/project-shell))
-
-(use-package magit :ensure t
+(use-package magit
+  :ensure t
   :init (with-eval-after-load 'project
           (add-to-list 'project-switch-commands '(magit-project-status "Magit") t))
   :bind ( :map ctl-x-map ("g" . magit-status)
           :map project-prefix-map ("m" . magit-project-status)))
+
+(use-package vterm
+  :ensure t
+  :preface
+  ;; https://mocompute.codeberg.page/item/2024/2024-09-03-emacs-project-vterm.html
+  (defun ossian/project-shell ()
+    (interactive)
+    (let* ((default-directory (project-root (project-current t)))
+           (default-project-shell-name (project-prefixed-buffer-name "shell"))
+           (shell-buffer (get-buffer default-project-shell-name)))
+      (if (and shell-buffer (not current-prefix-arg))
+          (if (comint-check-proc shell-buffer)
+              (pop-to-buffer shell-buffer (bound-and-true-p display-comint-buffer-action))
+            (vterm shell-buffer))
+        (vterm (generate-new-buffer-name default-project-shell-name)))))
+  :init (advice-add 'project-shell :override #'ossian/project-shell))
 
 (provide 'init)
 ;;; init.el ends here
