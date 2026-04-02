@@ -150,6 +150,8 @@
              (nnimap-address "imap.fastmail.com")
              (nnimap-user "ossian@fastmail.com")
              (nnimap-stream tls))))
+  (gnus-save-newsrc-file nil)
+  (gnus-read-newsrc-file nil)
   (gnus-use-cache t))
 
 ;;;; Misc:
