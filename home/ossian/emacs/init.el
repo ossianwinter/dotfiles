@@ -153,7 +153,8 @@
   (gnus-save-newsrc-file nil)
   (gnus-read-newsrc-file nil)
   (gnus-use-dribble-file nil)
-  (gnus-use-cache t))
+  (gnus-use-cache t)
+  :hook (gnus-group-mode . gnus-topic-mode))
 
 ;;;; Misc:
 
