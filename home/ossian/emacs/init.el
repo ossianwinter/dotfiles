@@ -183,5 +183,10 @@
         (vterm (generate-new-buffer-name default-project-shell-name)))))
   :init (advice-add 'project-shell :override #'ossian/project-shell))
 
+;;;; Language specific
+
+(use-package nix-mode
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
