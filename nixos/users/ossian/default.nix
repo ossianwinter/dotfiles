@@ -6,7 +6,6 @@
     packages = with pkgs; [
       chezmoi
       jetbrains.idea
-      claude-code
       codex
     ];
   };
