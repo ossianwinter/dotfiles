@@ -149,7 +149,8 @@
      (nnimap "Personal"
              (nnimap-address "imap.fastmail.com")
              (nnimap-user "ossian@fastmail.com")
-             (nnimap-stream tls)))))
+             (nnimap-stream tls))))
+  (gnus-use-cache t))
 
 ;;;; Misc:
 
