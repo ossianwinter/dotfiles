@@ -26,6 +26,7 @@ in
     package = pkgs.ungoogled-chromium;
     commandLineArgs = [
       "--omnibox-autocomplete-filtering=search"
+      "--show-avatar-button=never"
     ];
     extensions = map mkExtension extensions;
   };
