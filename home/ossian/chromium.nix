@@ -24,6 +24,9 @@ in
   programs.chromium = {
     enable = true;
     package = pkgs.ungoogled-chromium;
+    commandLineArgs = [
+      "--omnibox-autocomplete-filtering=search"
+    ];
     extensions = map mkExtension extensions;
   };
 
