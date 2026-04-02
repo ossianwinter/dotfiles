@@ -9,7 +9,8 @@
 
 ;;; Code:
 
-(setopt package-enable-at-startup nil)
+;; https://github.com/nix-community/emacs-overlay/issues/497
+(setopt package-archives nil)
 
 (setopt custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file t)
