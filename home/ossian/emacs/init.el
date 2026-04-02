@@ -76,6 +76,13 @@
 (use-package minibuf
   :custom (enable-recursive-minibuffers t))
 
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-pcm-leading-wildcard t))
+
 (use-package vertico
   :ensure t
   :init (vertico-mode +1))
