@@ -1,10 +1,10 @@
 { pkgs, ... }:
 {
   imports = [
+    ./chromium.nix
     ./darkman.nix
     ./emacs.nix
     ./email.nix
-    ./firefox.nix
     ./fonts.nix
     ./keyring.nix
     ./sway.nix
