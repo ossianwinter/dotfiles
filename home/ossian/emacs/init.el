@@ -152,6 +152,7 @@
              (nnimap-stream tls))))
   (gnus-save-newsrc-file nil)
   (gnus-read-newsrc-file nil)
+  (gnus-use-dribble-file nil)
   (gnus-use-cache t))
 
 ;;;; Misc:
