@@ -38,8 +38,8 @@
 (use-package ef-themes :ensure t)
 
 (use-package darkman :ensure t
-  :custom (darkman-themes '( :light ef-orange
-		             :dark ef-autumn))
+  :custom (darkman-themes '( :light tango
+		             :dark tango-dark))
   :config (darkman-mode +1))
 
 (use-package fontaine :ensure t
