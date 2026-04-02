@@ -5,7 +5,6 @@
     description = "Ossian Winter";
     packages = with pkgs; [
       chezmoi
-      jetbrains.idea
     ];
   };
 

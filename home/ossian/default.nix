@@ -56,7 +56,7 @@
   };
 
   home = {
-    packages = with pkgs; [ xdg-utils ];
+    packages = with pkgs; [ xdg-utils jetbrains.idea ];
 
     stateVersion = "25.11";
   };
