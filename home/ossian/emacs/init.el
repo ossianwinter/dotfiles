@@ -195,7 +195,8 @@
               (pop-to-buffer shell-buffer (bound-and-true-p display-comint-buffer-action))
             (vterm shell-buffer))
         (vterm (generate-new-buffer-name default-project-shell-name)))))
-  :init (advice-add 'project-shell :override #'ossian/project-shell))
+  :init (advice-add 'project-shell :override #'ossian/project-shell)
+  :bind ( :map vterm-mode-map ("M-s" . nil)))
 
 ;;;; Language specific
 
