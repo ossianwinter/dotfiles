@@ -188,5 +188,8 @@
 (use-package nix-mode
   :ensure t)
 
+(use-package kotlin-ts-mode
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
