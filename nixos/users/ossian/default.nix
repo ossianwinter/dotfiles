@@ -6,7 +6,6 @@
     packages = with pkgs; [
       chezmoi
       jetbrains.idea
-      codex
     ];
   };
 

@@ -26,6 +26,7 @@
 
   programs = {
     claude-code.enable = true;
+    codex.enable = true;
 
     git = {
       enable = true;
