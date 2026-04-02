@@ -113,7 +113,9 @@
 ;;;; Editing:
 
 (use-package simple
-  :custom (indent-tabs-mode nil))
+  :custom
+  (indent-tabs-mode nil)
+  (read-extended-command-predicate #'command-completion-default-include-p))
 
 (use-package vundo
   :ensure t
