@@ -45,8 +45,9 @@
   (set-face-attribute 'variable-pitch nil
                       :family "IBM Plex Sans"))
 
-(set-fontset-font t 'symbol "JuliaMono")
-(set-fontset-font t 'symbol "Symbola" nil 'append)
+(use-package fontset
+  :config
+  (set-fontset-font t 'symbol "Symbola"))
 
 ;;;; Completion:
 
