@@ -45,9 +45,12 @@
     vesktop.enable = true;
   };
 
-  xdg.autostart.entries = [
-    "${pkgs._1password-gui}/share/applications/1password.desktop"
-  ];
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${pkgs._1password-gui}/share/applications/1password.desktop"
+    ];
+  };
 
   home.stateVersion = "25.11";
 }
