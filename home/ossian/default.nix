@@ -52,5 +52,9 @@
     ];
   };
 
-  home.stateVersion = "25.11";
+  home = {
+    packages = with pkgs; [ xdg-utils ];
+
+    stateVersion = "25.11";
+  };
 }
