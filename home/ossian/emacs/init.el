@@ -216,5 +216,8 @@
 (use-package bazel
   :ensure t)
 
+(use-package rust-ts-mode
+  :mode "\\.rs\\'")
+
 (provide 'init)
 ;;; init.el ends here
