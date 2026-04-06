@@ -210,5 +210,8 @@
 (use-package kotlin-ts-mode
   :ensure t)
 
+(use-package csharp-ts-mode
+  :mode "\\.cs\\'")
+
 (provide 'init)
 ;;; init.el ends here
