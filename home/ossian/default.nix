@@ -31,6 +31,12 @@
     claude-code.enable = true;
     codex.enable = true;
 
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     git = {
       enable = true;
       package = pkgs.gitFull;
