@@ -213,5 +213,8 @@
 (use-package csharp-ts-mode
   :mode "\\.cs\\'")
 
+(use-package bazel
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
