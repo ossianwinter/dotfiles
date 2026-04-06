@@ -158,6 +158,10 @@
 
 ;;;; Misc:
 
+(use-package envrc
+  :ensure t
+  :init (envrc-global-mode))
+
 (use-package auth-source-1password
   :ensure t
   :preface
