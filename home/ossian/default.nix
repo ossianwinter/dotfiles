@@ -26,6 +26,8 @@
   };
 
   programs = {
+    bash.enable = true;
+
     claude-code.enable = true;
     codex.enable = true;
 
