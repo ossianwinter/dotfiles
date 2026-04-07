@@ -146,6 +146,8 @@
   (gnus-secondary-select-methods
    '((nntp "Gmane"
            (nntp-address "news.gmane.io"))
+     (nntp "Gwene"
+           (nntp-address "news.gwene.org"))
      (nnimap "Personal"
              (nnimap-address "imap.fastmail.com")
              (nnimap-user "ossian@fastmail.com")
