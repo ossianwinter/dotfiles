@@ -208,7 +208,8 @@
   :ensure t)
 
 (use-package kotlin-ts-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.kt\\'")
 
 (use-package csharp-ts-mode
   :mode "\\.cs\\'")
