@@ -204,6 +204,9 @@
   :init (advice-add 'project-shell :override #'ossian/project-shell)
   :bind ( :map vterm-mode-map ("M-s" . nil)))
 
+(use-package nov
+  :ensure t)
+
 ;;;; Language specific
 
 (use-package nix-mode

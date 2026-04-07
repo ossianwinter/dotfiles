@@ -15,6 +15,9 @@
             hash = "sha256-9jdCVZ6ZwV+Jn8pFCBMj2iB+gtCMmpVKlZuYqYyOkcw=";
           };
         });
+        nov = prev.melpaPackages.nov.overrideAttrs(old: {
+          packageRequires = old.packageRequires ++ [ pkgs.unzip ];
+        });
       };
     };
   };
