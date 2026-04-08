@@ -205,7 +205,8 @@
   :bind ( :map vterm-mode-map ("M-s" . nil)))
 
 (use-package nov
-  :ensure t)
+  :ensure t
+  :mode "\\.epub\\'")
 
 ;;;; Language specific
 
