@@ -180,6 +180,11 @@
   :commands auth-source-1password-enable
   :init (auth-source-1password-enable))
 
+(use-package auth-source-oama
+  :ensure t
+  :commands auth-source-oama-enable
+  :init (auth-source-oama-enable))
+
 (use-package magit
   :ensure t
   :init (with-eval-after-load 'project
