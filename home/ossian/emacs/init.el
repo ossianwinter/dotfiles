@@ -171,7 +171,7 @@
       (backend type host user port)
     (pcase `(,host ,user)
       (`(,(or `(,_ "imap.fastmail.com") "smtp.fastmail.com") "ossian@fastmail.com")
-       "Personal/i7o5bqrpenxguh5psiaave5k7m/credential")
+       "iadi64yxnoyh2b5xosdxiydcna/vfvkpwfirunwfc4folgrei6bhu/p7v3ucu4dj7audlwublbkd5mpe")
       (`(,(pred stringp) ,(pred stringp))
        (auth-source-1password--1password-construct-entry-path
         backend type host user port))
