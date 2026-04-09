@@ -1,9 +1,11 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   services.gnome-keyring = {
     enable = true;
     components = [ "secrets" ];
   };
+
+  home.packages = with pkgs; [ gcr ];
 
   xdg.portal = {
     enable = true;
