@@ -26,8 +26,6 @@
             rev = "e9ca0b96a8a741fc95a9dfbc80fb8c063175c211";
             hash = "sha256-zU9cIvsPBnjtDjZWqUk61Yjfq3HRHBrhfchmvBoAV+o=";
           };
-
-          packageRequires = [ pkgs.oama ];
         };
 
         nov = prev.melpaPackages.nov.overrideAttrs(old: {

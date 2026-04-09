@@ -151,7 +151,12 @@
      (nnimap "Personal"
              (nnimap-address "imap.fastmail.com")
              (nnimap-user "ossian@fastmail.com")
-             (nnimap-stream tls))))
+             (nnimap-stream tls))
+     (nnimap "Work"
+             (nnimap-address "outlook.office365.com")
+             (nnimap-user "ossian@tidio.se")
+             (nnimap-stream tls)
+             (nnimap-authenticator xoauth2))))
   (gnus-save-newsrc-file nil)
   (gnus-read-newsrc-file nil)
   (gnus-use-dribble-file nil)
