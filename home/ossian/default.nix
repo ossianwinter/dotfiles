@@ -65,7 +65,7 @@
   };
 
   home = {
-    packages = with pkgs; [ xdg-utils jetbrains.idea ];
+    packages = with pkgs; [ xdg-utils jetbrains.idea oama ];
 
     stateVersion = "25.11";
   };
