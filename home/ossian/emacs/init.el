@@ -198,7 +198,8 @@
           :map project-prefix-map ("m" . magit-project-status)))
 
 (use-package compile
-  :custom (compilation-scroll-output t))
+  :custom (compilation-scroll-output t)
+  :hook (compilation-filter . ansi-color-compilation-filter))
 
 (use-package vterm
   :ensure t
