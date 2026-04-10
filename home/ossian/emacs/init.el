@@ -197,6 +197,9 @@
   :bind ( :map ctl-x-map ("g" . magit-status)
           :map project-prefix-map ("m" . magit-project-status)))
 
+(use-package compile
+  :custom (compilation-scroll-output t))
+
 (use-package vterm
   :ensure t
   :preface
