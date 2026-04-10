@@ -7,6 +7,7 @@
     ./email.nix
     ./fonts.nix
     ./keyring.nix
+    ./oama.nix
     ./podman.nix
     ./sway.nix
   ];
