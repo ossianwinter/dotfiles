@@ -247,6 +247,7 @@
   :ensure t)
 
 (use-package rust-ts-mode
+  :hook (rust-ts-mode . eglot-ensure)
   :mode "\\.rs\\'")
 
 (provide 'init)
