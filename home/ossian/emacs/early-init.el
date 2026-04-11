@@ -18,14 +18,12 @@
 (setopt frame-inhibit-implied-resize t)
 (setopt inhibit-compacting-font-caches t)
 
-(push '(menu-bar-lines . 0) default-frame-alist)
-(setopt menu-bar-mode nil)
-
-(push '(tool-bar-lines . 0) default-frame-alist)
-(setopt tool-bar-mode nil)
-
-(push '(vertical-scroll-bars) default-frame-alist)
-(setopt scroll-bar-mode nil)
+(modify-all-frames-parameters (list (cons 'menu-bar-lines 0)
+                                    (cons 'tool-bar-lines 0)
+                                    (cons 'vertical-scroll-bars nil)))
+(setopt menu-bar-mode nil
+        tool-bar-mode nil
+        scroll-bar-mode nil)
 
 (provide 'early-init)
 ;;; early-init.el ends here
