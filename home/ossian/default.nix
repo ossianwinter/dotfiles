@@ -5,6 +5,7 @@
     ./darkman.nix
     ./emacs.nix
     ./email.nix
+    ./firefox.nix
     ./fonts.nix
     ./keyring.nix
     ./oama.nix
