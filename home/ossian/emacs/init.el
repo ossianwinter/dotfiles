@@ -231,6 +231,11 @@
   :ensure t
   :mode "\\.epub\\'")
 
+;;;; Language agnostic
+
+(use-package eglot
+  :custom (eglot-extend-to-xref t))
+
 ;;;; Language specific
 
 (use-package nix-mode
