@@ -231,6 +231,9 @@
   :ensure t
   :mode "\\.epub\\'")
 
+(use-package filechooser
+  :ensure t)
+
 ;;;; Language agnostic
 
 (use-package eglot
