@@ -15,17 +15,17 @@
 (setopt custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file t)
 
-(setq frame-inhibit-implied-resize t)
-(setq inhibit-compacting-font-caches t)
+(setopt frame-inhibit-implied-resize t)
+(setopt inhibit-compacting-font-caches t)
 
 (push '(menu-bar-lines . 0) default-frame-alist)
-(setq menu-bar-mode nil)
+(setopt menu-bar-mode nil)
 
 (push '(tool-bar-lines . 0) default-frame-alist)
-(setq tool-bar-mode nil)
+(setopt tool-bar-mode nil)
 
 (push '(vertical-scroll-bars) default-frame-alist)
-(setq scroll-bar-mode nil)
+(setopt scroll-bar-mode nil)
 
 (provide 'early-init)
 ;;; early-init.el ends here
