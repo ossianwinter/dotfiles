@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./chromium.nix
+    # ./chromium.nix
     ./darkman.nix
     ./emacs.nix
     ./email.nix
