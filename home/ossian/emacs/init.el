@@ -246,9 +246,10 @@
 (use-package bazel
   :ensure t)
 
-(use-package rust-ts-mode
-  :hook (rust-ts-mode . eglot-ensure)
-  :mode "\\.rs\\'")
+(use-package rust-mode
+  :ensure t
+  :custom (rust-mode-treesitter-derive t)
+  :hook (rust-mode . eglot-ensure))
 
 (provide 'init)
 ;;; init.el ends here
