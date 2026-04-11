@@ -254,7 +254,9 @@
 (use-package rust-mode
   :ensure t
   :custom (rust-mode-treesitter-derive t)
-  :hook (rust-mode . eglot-ensure))
+  :hook
+  (rust-mode . eglot-ensure)
+  (rust-mode . subword-mode))
 
 (provide 'init)
 ;;; init.el ends here
