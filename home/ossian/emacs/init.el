@@ -96,6 +96,9 @@
 (use-package repeat
   :init (repeat-mode +1))
 
+(use-package savehist
+  :init (savehist-mode +1))
+
 (use-package consult
   :ensure t
   :custom
