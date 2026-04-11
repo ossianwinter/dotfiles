@@ -93,6 +93,9 @@
 
 ;;;; Navigation:
 
+(use-package which-key
+  :init (which-key-mode +1))
+
 (use-package repeat
   :init (repeat-mode +1))
 
