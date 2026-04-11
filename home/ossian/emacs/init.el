@@ -99,6 +99,9 @@
 (use-package savehist
   :init (savehist-mode +1))
 
+(use-package recentf
+  :init (recentf-mode +1))
+
 (use-package consult
   :ensure t
   :custom
