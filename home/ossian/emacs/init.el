@@ -119,6 +119,10 @@
          ("f" . consult-find)
          :map ctl-x-map ("b" . consult-buffer)))
 
+(use-package avy
+  :ensure t
+  :bind (("C-." . avy-goto-char-timer)))
+
 ;;;; Editing:
 
 (use-package simple
