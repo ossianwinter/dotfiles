@@ -237,7 +237,12 @@
 ;;;; Language agnostic
 
 (use-package eglot
-  :custom (eglot-extend-to-xref t))
+  :custom (eglot-extend-to-xref t)
+  :bind ( :prefix-map ossian/eglot-prefix-map
+          :prefix "C-c l"
+          ("a" . eglot-code-actions)
+          ("r" . eglot-rename)
+          ("f" . eglot-format)))
 
 ;;;; Language specific
 
