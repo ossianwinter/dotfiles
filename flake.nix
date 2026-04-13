@@ -36,5 +36,27 @@
           }
         ];
       };
+
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./nixos/systems/laptop
+          ./nixos/users/ossian
+          { users.users.ossian.extraGroups = [ "networkmanager" "wheel" ]; }
+
+          ./nixos/1password.nix
+          ./nixos/audio.nix
+
+          { nixpkgs.overlays = [ emacs-overlay.overlay ]; }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.ossian = ./home/ossian;
+            };
+          }
+        ];
+      };
     };
 }
