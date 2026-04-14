@@ -121,6 +121,7 @@
 
 (use-package avy
   :ensure t
+  :custom (avy-keys '(?a ?s ?d ?f ?j ?k ?l ?\;))
   :bind (("C-." . avy-goto-char-timer)))
 
 ;;;; Editing:
