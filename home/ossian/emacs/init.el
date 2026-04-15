@@ -281,5 +281,9 @@
   :ensure t
   :hook (ocaml-eglot-mode . eglot-ensure))
 
+(use-package neocaml
+  :ensure t
+  :hook (neocaml-base-mode . ocaml-eglot-mode))
+
 (provide 'init)
 ;;; init.el ends here
