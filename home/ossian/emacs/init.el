@@ -204,6 +204,9 @@
   :commands auth-source-oama-enable
   :init (auth-source-oama-enable))
 
+(use-package ediff
+  :custom (ediff-window-setup-function #'ediff-setup-windows-plain))
+
 (use-package magit
   :ensure t
   :init (with-eval-after-load 'project
