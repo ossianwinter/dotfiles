@@ -277,5 +277,9 @@
 (use-package tsx-ts-mode
   :mode "\\.tsx\\'")
 
+(use-package ocaml-eglot
+  :ensure t
+  :hook (ocaml-eglot-mode . eglot-ensure))
+
 (provide 'init)
 ;;; init.el ends here
