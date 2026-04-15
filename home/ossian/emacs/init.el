@@ -271,5 +271,8 @@
   (rust-mode . eglot-ensure)
   (rust-mode . subword-mode))
 
+(use-package typescript-ts-mode
+  :mode "\\.ts\\'")
+
 (provide 'init)
 ;;; init.el ends here
