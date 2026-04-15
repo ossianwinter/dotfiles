@@ -274,5 +274,8 @@
 (use-package typescript-ts-mode
   :mode "\\.ts\\'")
 
+(use-package tsx-ts-mode
+  :mode "\\.tsx\\'")
+
 (provide 'init)
 ;;; init.el ends here
