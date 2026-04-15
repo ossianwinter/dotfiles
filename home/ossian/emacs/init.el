@@ -288,5 +288,8 @@
 (use-package clojure-ts-mode
   :ensure t)
 
+(use-package cider
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
