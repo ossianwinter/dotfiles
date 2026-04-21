@@ -294,6 +294,10 @@
 (use-package dune
   :ensure t)
 
+(use-package ocamlformat
+  :ensure t
+  :hook (before-save . ocamlformat-before-save))
+
 ;;;; Clojure
 
 (use-package clojure-ts-mode
