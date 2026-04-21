@@ -249,20 +249,23 @@
           ("r" . eglot-rename)
           ("f" . eglot-format)))
 
-;;;; Language specific
+;;;; Nix
 
 (use-package nix-mode
   :ensure t)
+
+;;;; Kotlin
 
 (use-package kotlin-ts-mode
   :ensure t
   :mode "\\.kt\\'")
 
+;;;; C#
+
 (use-package csharp-ts-mode
   :mode "\\.cs\\'")
 
-(use-package bazel
-  :ensure t)
+;;;; Rust
 
 (use-package rust-mode
   :ensure t
@@ -270,6 +273,8 @@
   :hook
   (rust-mode . eglot-ensure)
   (rust-mode . subword-mode))
+
+;;;; TypeScript
 
 (use-package typescript-ts-mode
   :mode "\\.ts\\'")
