@@ -277,13 +277,19 @@
 (use-package tsx-ts-mode
   :mode "\\.tsx\\'")
 
-(use-package ocaml-eglot
-  :ensure t
-  :hook (ocaml-eglot-mode . eglot-ensure))
+;;;; OCaml
 
-(use-package neocaml
+(use-package merlin
+  :ensure t)
+
+(use-package tuareg
   :ensure t
-  :hook (neocaml-base-mode . ocaml-eglot-mode))
+  :hook (tuareg-mode . merlin-mode))
+
+(use-package dune
+  :ensure t)
+
+;;;; Clojure
 
 (use-package clojure-ts-mode
   :ensure t)
