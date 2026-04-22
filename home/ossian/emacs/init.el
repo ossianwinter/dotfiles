@@ -246,8 +246,11 @@
   :bind ( :prefix-map ossian/eglot-prefix-map
           :prefix "C-c l"
           ("a" . eglot-code-actions)
-          ("r" . eglot-rename)
-          ("f" . eglot-format)))
+          ("r" . eglot-rename)))
+
+(use-package apheleia
+  :ensure t
+  :init (apheleia-global-mode +1))
 
 ;;;; Nix
 
@@ -293,10 +296,6 @@
 
 (use-package dune
   :ensure t)
-
-(use-package ocamlformat
-  :ensure t
-  :hook (before-save . ocamlformat-before-save))
 
 ;;;; Clojure
 
