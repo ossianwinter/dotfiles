@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    julia-mono
     ibm-plex
     symbola
   ];
@@ -9,10 +10,7 @@
     enable = true;
 
     defaultFonts = {
-      monospace = [
-        "IBM Plex Mono"
-        "Symbola"
-      ];
+      monospace = [ "JuliaMono" ];
 
       sansSerif = [
         "IBM Plex Sans"

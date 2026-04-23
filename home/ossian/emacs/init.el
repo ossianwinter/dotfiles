@@ -55,10 +55,10 @@
   :if (display-graphic-p)
   :init
   (set-face-attribute 'default nil
-                      :family "IBM Plex Mono"
+                      :family "JuliaMono"
                       :height 140)
   (set-face-attribute 'variable-pitch nil
-                      :family "IBM Plex Sans"))
+                      :family "JuliaMono"))
 
 (use-package fontset
   :if (display-graphic-p)
@@ -304,6 +304,13 @@
 
 (use-package cider
   :ensure t)
+
+;;;; Java
+
+(use-package java-ts-mode
+  :hook
+  (java-ts-mode . eglot-ensure)
+  (java-ts-mode . subword-mode))
 
 (provide 'init)
 ;;; init.el ends here
