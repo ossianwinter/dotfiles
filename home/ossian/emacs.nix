@@ -4,7 +4,7 @@
     enable = true;
     package = pkgs.emacsWithPackagesFromUsePackage {
       config = ./emacs/init.el;
-      package = pkgs.emacs-pgtk;
+      package = pkgs.emacs-git-pgtk;
       extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       override = final: prev: {
         auth-source-1password = prev.melpaPackages.auth-source-1password.overrideAttrs(old: {
