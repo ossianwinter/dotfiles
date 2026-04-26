@@ -71,6 +71,8 @@
     domain = "home.winter.vg";
   };
 
+  services.udisks2.enable = true;
+
   programs = {
     dconf.enable = true;
     nix-ld.enable = true;
