@@ -15,6 +15,11 @@
                 {
                     "type": "insecureAcceptAnything"
                 }
+            ],
+            "ghcr.io/falcondev-oss": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
             ]
         },
         "docker-daemon": {
