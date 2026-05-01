@@ -4,7 +4,14 @@
     enable = true;
     package = pkgs.emacsWithPackagesFromUsePackage {
       config = ./emacs/init.el;
-      package = pkgs.emacs-git-pgtk;
+      package = pkgs.emacs-git-pgtk.overrideAttrs (old: {
+        src = pkgs.fetchFromGitHub {
+          owner = "emacs-mirror";
+          repo = "emacs";
+          rev = old.src.rev;
+          hash = old.src.hash;
+        };
+      });
       extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       override = final: prev: {
         auth-source-1password = prev.melpaPackages.auth-source-1password.overrideAttrs(old: {
