@@ -39,6 +39,11 @@
       nix-direnv.enable = true;
     };
 
+    discord = {
+      enable = true;
+      settings.SKIP_HOST_UPDATE = true;
+    };
+
     git = {
       enable = true;
       package = pkgs.gitFull;
@@ -55,8 +60,6 @@
         };
       };
     };
-
-    vesktop.enable = true;
   };
 
   xdg.autostart = {
