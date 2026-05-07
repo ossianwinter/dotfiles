@@ -312,5 +312,10 @@
   (java-ts-mode . eglot-ensure)
   (java-ts-mode . subword-mode))
 
+;;;; Terraform
+
+(use-package terraform-mode
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
