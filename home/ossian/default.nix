@@ -94,7 +94,7 @@
               )
             );
       in
-        with pkgs; [ xdg-utils jetbrains.idea oama krisp-patcher ];
+        with pkgs; [ xdg-utils jetbrains.idea oama krisp-patcher code-cursor ];
 
     stateVersion = "25.11";
   };
