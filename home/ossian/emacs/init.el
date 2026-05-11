@@ -320,5 +320,11 @@
 (use-package hcl-mode
   :ensure t)
 
+;;;; Godot
+
+(use-package gdscript-mode
+  :ensure t
+  :hook (gdscript-mode . eglot-ensure))
+
 (provide 'init)
 ;;; init.el ends here
