@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-discord-krisp-patcher.url = "github:NixOS/nixpkgs/pull/506089/head";
+    nixpkgs-bitwig-5_19.url = "github:NixOS/nixpkgs/4154834be5af054e54afdb225e10d4c7bc37a255";
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +17,7 @@
     {
       nixpkgs,
       nixpkgs-discord-krisp-patcher,
+      nixpkgs-bitwig-5_19,
       home-manager,
       emacs-overlay,
       ...
@@ -31,6 +33,18 @@
         in
         {
           discord = pkgs-discord-krisp-patcher.discord;
+        }
+      );
+      bitwig-5_19-overlay = (
+        final: prev:
+        let
+          pkgs-bitwig-5_19 = import nixpkgs-bitwig-5_19 {
+            system = final.stdenv.hostPlatform.system;
+            config.allowUnfree = final.config.allowUnfree;
+          };
+        in
+        {
+          bitwig-studio = pkgs-bitwig-5_19.bitwig-studio;
         }
       );
     in
@@ -49,6 +63,7 @@
             nixpkgs.overlays = [
               emacs-overlay.overlay
               discord-krisp-patcher-overlay
+              bitwig-5_19-overlay
             ];
           }
 
@@ -81,6 +96,7 @@
             nixpkgs.overlays = [
               emacs-overlay.overlay
               discord-krisp-patcher-overlay
+              bitwig-5_19-overlay
             ];
           }
 

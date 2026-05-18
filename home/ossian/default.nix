@@ -75,6 +75,7 @@
       jetbrains.idea
       oama
       code-cursor
+      bitwig-studio
     ];
     stateVersion = "25.11";
   };
