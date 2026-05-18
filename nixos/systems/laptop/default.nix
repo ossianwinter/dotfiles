@@ -17,7 +17,10 @@
     cpu.intel.updateMicrocode = true;
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [ intel-media-driver vpl-gpu-rt ];
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vpl-gpu-rt
+      ];
     };
   };
 
@@ -60,7 +63,10 @@
     };
   };
 
-  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 
   time.timeZone = "Europe/Stockholm";
 

@@ -14,7 +14,7 @@
       });
       extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       override = final: prev: {
-        auth-source-1password = prev.melpaPackages.auth-source-1password.overrideAttrs(old: {
+        auth-source-1password = prev.melpaPackages.auth-source-1password.overrideAttrs (old: {
           src = pkgs.fetchFromGitHub {
             owner = "ossianwinter";
             repo = "auth-source-1password";
@@ -35,7 +35,7 @@
           };
         };
 
-        nov = prev.melpaPackages.nov.overrideAttrs(old: {
+        nov = prev.melpaPackages.nov.overrideAttrs (old: {
           packageRequires = old.packageRequires ++ [ pkgs.unzip ];
         });
       };

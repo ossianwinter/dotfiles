@@ -66,13 +66,16 @@
 
   xdg.autostart = {
     enable = true;
-    entries = [
-      "${pkgs._1password-gui}/share/applications/1password.desktop"
-    ];
+    entries = [ "${pkgs._1password-gui}/share/applications/1password.desktop" ];
   };
 
   home = {
-    packages = with pkgs; [ xdg-utils jetbrains.idea oama code-cursor ];
+    packages = with pkgs; [
+      xdg-utils
+      jetbrains.idea
+      oama
+      code-cursor
+    ];
     stateVersion = "25.11";
   };
 }

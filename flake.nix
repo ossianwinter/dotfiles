@@ -67,7 +67,12 @@
         modules = [
           ./nixos/systems/laptop
           ./nixos/users/ossian
-          { users.users.ossian.extraGroups = [ "networkmanager" "wheel" ]; }
+          {
+            users.users.ossian.extraGroups = [
+              "networkmanager"
+              "wheel"
+            ];
+          }
 
           ./nixos/1password.nix
           ./nixos/audio.nix
