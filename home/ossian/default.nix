@@ -11,6 +11,7 @@
     ./oama.nix
     ./podman.nix
     ./sway.nix
+    ./subversion.nix
   ];
 
   services = {
