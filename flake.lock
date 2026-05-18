@@ -57,6 +57,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-discord-krisp-patcher": {
+      "locked": {
+        "lastModified": 1778289552,
+        "narHash": "sha256-J2hFBFYVB6fyzHDHxGmgEBRZOV0GLj8Ccc58GGrsmgo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3327261e53f551e4b4393ef3d6ac660976c19a1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/506089/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1778737229,
@@ -77,7 +93,8 @@
       "inputs": {
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-discord-krisp-patcher": "nixpkgs-discord-krisp-patcher"
       }
     }
   },
