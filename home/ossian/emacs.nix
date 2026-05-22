@@ -38,6 +38,19 @@
         nov = prev.melpaPackages.nov.overrideAttrs (old: {
           packageRequires = old.packageRequires ++ [ pkgs.unzip ];
         });
+
+        odin-mode = prev.trivialBuild {
+          pname = "odin-mode";
+          version = "0.1.0";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "mattt-b";
+            repo = "odin-mode";
+            rev = "21c6ff8b49f5eaa2d3b9969feeb08de921f11e92";
+            hash = "sha256-4Fq8OegWd7nwiOx+OCe0tQ+ivfiSrbMvjHDEQVJEpho=";
+          };
+        };
+
       };
     };
   };

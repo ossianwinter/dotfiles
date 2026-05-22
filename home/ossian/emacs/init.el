@@ -326,5 +326,18 @@
   :ensure t
   :hook (gdscript-mode . eglot-ensure))
 
+;;;; Odin
+
+(use-package odin-mode
+  :ensure t
+  :preface
+  (defun ossian/odin-mode-setup ()
+    (setq-local indent-tabs-mode t
+                tab-width 8
+                js-indent-level 8))
+  :hook ((odin-mode . eglot-ensure)
+         (odin-mode . ossian/odin-mode-setup))
+  :mode "\\.odin\\'")
+
 (provide 'init)
 ;;; init.el ends here
