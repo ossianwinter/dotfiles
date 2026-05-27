@@ -45,6 +45,9 @@
   (set-language-environment "UTF-8")
   (setopt default-input-method nil))
 
+(use-package warnings
+  :init (add-to-list 'warning-suppress-types '(treesit-font-lock-rules-mismatch) t))
+
 ;;;; Appearance:
 
 (use-package frame
