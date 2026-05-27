@@ -42,7 +42,27 @@
 
     discord = {
       enable = true;
-      package = pkgs.discord.override { withOpenASAR = true; };
+      package =
+        let
+          discord = pkgs.discord.override { withKrisp = true; };
+        in
+        pkgs.symlinkJoin {
+          name = "${discord.pname}-${discord.version}-epipe-fix";
+
+          paths = [ discord ];
+
+          nativeBuildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            rm -f "$out/bin/Discord" "$out/bin/discord"
+            makeWrapper "${discord}/bin/Discord" "$out/bin/Discord" \
+              --run 'exec >/dev/null 2>/dev/null'
+            makeWrapper "${discord}/bin/discord" "$out/bin/discord" \
+              --run 'exec >/dev/null 2>/dev/null'
+          '';
+
+          meta = discord.meta;
+          passthru = discord.passthru or { };
+        };
       settings.SKIP_HOST_UPDATE = true;
     };
 
