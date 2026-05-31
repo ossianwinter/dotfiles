@@ -96,6 +96,7 @@
       oama
       code-cursor
       bitwig-studio
+      ares
     ];
     stateVersion = "25.11";
   };
