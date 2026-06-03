@@ -317,10 +317,20 @@
 (use-package java-ts-mode
   :hook
   (java-ts-mode . lsp-deferred)
-  (java-ts-mode . subword-mode))
+  (java-ts-mode . subword-mode)
+  :mode "\\.java\\'")
 
 (use-package lsp-java
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list
+   'auto-mode-alist
+   (cons (concat "\\`"
+                 (regexp-quote
+                  (file-name-as-directory
+                   (expand-file-name lsp-java-workspace-cache-dir))))
+         #'java-ts-mode)
+   t))
 
 ;;;; Terraform:
 
