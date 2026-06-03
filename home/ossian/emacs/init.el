@@ -242,7 +242,7 @@
   :ensure t
   :mode "\\.epub\\'")
 
-;;;; Language agnostic
+;;;; Language agnostic:
 
 (use-package eglot
   :custom (eglot-extend-to-xref t)
@@ -255,23 +255,23 @@
   :ensure t
   :init (apheleia-global-mode +1))
 
-;;;; Nix
+;;;; Nix:
 
 (use-package nix-mode
   :ensure t)
 
-;;;; Kotlin
+;;;; Kotlin:
 
 (use-package kotlin-ts-mode
   :ensure t
   :mode "\\.kt\\'")
 
-;;;; C#
+;;;; C#:
 
 (use-package csharp-ts-mode
   :mode "\\.cs\\'")
 
-;;;; Rust
+;;;; Rust:
 
 (use-package rust-mode
   :ensure t
@@ -280,7 +280,7 @@
   (rust-mode . eglot-ensure)
   (rust-mode . subword-mode))
 
-;;;; TypeScript
+;;;; TypeScript:
 
 (use-package typescript-ts-mode
   :mode "\\.ts\\'")
@@ -288,7 +288,7 @@
 (use-package tsx-ts-mode
   :mode "\\.tsx\\'")
 
-;;;; OCaml
+;;;; OCaml:
 
 (use-package merlin
   :ensure t)
@@ -300,7 +300,7 @@
 (use-package dune
   :ensure t)
 
-;;;; Clojure
+;;;; Clojure:
 
 (use-package clojure-ts-mode
   :ensure t)
@@ -308,14 +308,14 @@
 (use-package cider
   :ensure t)
 
-;;;; Java
+;;;; Java:
 
 (use-package java-ts-mode
   :hook
   (java-ts-mode . eglot-ensure)
   (java-ts-mode . subword-mode))
 
-;;;; Terraform
+;;;; Terraform:
 
 (use-package terraform-mode
   :ensure t)
@@ -323,13 +323,13 @@
 (use-package hcl-mode
   :ensure t)
 
-;;;; Godot
+;;;; Godot:
 
 (use-package gdscript-mode
   :ensure t
   :hook (gdscript-mode . eglot-ensure))
 
-;;;; Odin
+;;;; Odin:
 
 (use-package odin-mode
   :ensure t
