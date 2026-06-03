@@ -251,6 +251,10 @@
           ("a" . eglot-code-actions)
           ("r" . eglot-rename)))
 
+(use-package lsp-mode
+  :ensure t
+  :custom (lsp-keymap-prefix "C-c l"))
+
 (use-package apheleia
   :ensure t
   :init (apheleia-global-mode +1))
@@ -277,7 +281,7 @@
   :ensure t
   :custom (rust-mode-treesitter-derive t)
   :hook
-  (rust-mode . eglot-ensure)
+  (rust-mode . lsp-deferred)
   (rust-mode . subword-mode))
 
 ;;;; TypeScript:
@@ -312,8 +316,11 @@
 
 (use-package java-ts-mode
   :hook
-  (java-ts-mode . eglot-ensure)
+  (java-ts-mode . lsp-deferred)
   (java-ts-mode . subword-mode))
+
+(use-package lsp-java
+  :ensure t)
 
 ;;;; Terraform:
 
@@ -327,7 +334,7 @@
 
 (use-package gdscript-mode
   :ensure t
-  :hook (gdscript-mode . eglot-ensure))
+  :hook (gdscript-mode . lsp-deferred))
 
 ;;;; Odin:
 
@@ -338,7 +345,7 @@
     (setq-local indent-tabs-mode t
                 tab-width 8
                 js-indent-level 8))
-  :hook ((odin-mode . eglot-ensure)
+  :hook ((odin-mode . lsp-deferred)
          (odin-mode . ossian/odin-mode-setup))
   :mode "\\.odin\\'")
 
