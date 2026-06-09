@@ -359,5 +359,12 @@
          (odin-mode . ossian/odin-mode-setup))
   :mode "\\.odin\\'")
 
+;;;; Gleam:
+
+(use-package gleam-ts-mode
+  :ensure t
+  :hook (gleam-ts-mode . lsp-deferred)
+  :mode "\\.gleam\\'")
+
 (provide 'init)
 ;;; init.el ends here
