@@ -366,5 +366,11 @@
   :hook (gleam-ts-mode . lsp-deferred)
   :mode "\\.gleam\\'")
 
+;;;; Go:
+
+(use-package go-ts-mode
+  :hook (go-ts-mode . lsp-deferred)
+  :mode "\\.go\\'")
+
 (provide 'init)
 ;;; init.el ends here
