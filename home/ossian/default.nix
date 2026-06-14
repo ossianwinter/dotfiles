@@ -97,6 +97,7 @@
       code-cursor
       bitwig-studio
       ares
+      devenv
     ];
     stateVersion = "25.11";
   };
