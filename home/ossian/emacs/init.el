@@ -372,5 +372,12 @@
   :hook (go-ts-mode . lsp-deferred)
   :mode "\\.go\\'")
 
+;;;; Erlang:
+
+(use-package erlang
+  :ensure t
+  :hook (erlang-mode . lsp-deferred)
+  :mode ("\\.erl\\'" . erlang-mode))
+
 (provide 'init)
 ;;; init.el ends here
