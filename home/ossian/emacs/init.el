@@ -379,5 +379,11 @@
   :hook (erlang-mode . lsp-deferred)
   :mode ("\\.erl\\'" . erlang-mode))
 
+;;;; Elm:
+
+(use-package elm-mode
+  :ensure t
+  :hook (elm-mode . lsp-deferred))
+
 (provide 'init)
 ;;; init.el ends here
