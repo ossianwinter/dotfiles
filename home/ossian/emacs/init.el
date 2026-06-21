@@ -251,10 +251,6 @@
           ("a" . eglot-code-actions)
           ("r" . eglot-rename)))
 
-(use-package lsp-mode
-  :ensure t
-  :custom (lsp-keymap-prefix "C-c l"))
-
 (use-package apheleia
   :ensure t
   :init (apheleia-global-mode +1))
@@ -281,7 +277,7 @@
   :ensure t
   :custom (rust-mode-treesitter-derive t)
   :hook
-  (rust-mode . lsp-deferred)
+  (rust-mode . eglot-ensure)
   (rust-mode . subword-mode))
 
 ;;;; TypeScript:
@@ -316,21 +312,9 @@
 
 (use-package java-ts-mode
   :hook
-  (java-ts-mode . lsp-deferred)
+  (java-ts-mode . eglot-ensure)
   (java-ts-mode . subword-mode)
   :mode "\\.java\\'")
-
-(use-package lsp-java
-  :ensure t
-  :config
-  (add-to-list
-   'auto-mode-alist
-   (cons (concat "\\`"
-                 (regexp-quote
-                  (file-name-as-directory
-                   (expand-file-name lsp-java-workspace-cache-dir))))
-         #'java-ts-mode)
-   t))
 
 ;;;; Terraform:
 
@@ -344,7 +328,7 @@
 
 (use-package gdscript-mode
   :ensure t
-  :hook (gdscript-mode . lsp-deferred))
+  :hook (gdscript-mode . eglot-ensure))
 
 ;;;; Odin:
 
@@ -355,7 +339,7 @@
     (setq-local indent-tabs-mode t
                 tab-width 8
                 js-indent-level 8))
-  :hook ((odin-mode . lsp-deferred)
+  :hook ((odin-mode . eglot-ensure)
          (odin-mode . ossian/odin-mode-setup))
   :mode "\\.odin\\'")
 
@@ -363,27 +347,27 @@
 
 (use-package gleam-ts-mode
   :ensure t
-  :hook (gleam-ts-mode . lsp-deferred)
+  :hook (gleam-ts-mode . eglot-ensure)
   :mode "\\.gleam\\'")
 
 ;;;; Go:
 
 (use-package go-ts-mode
-  :hook (go-ts-mode . lsp-deferred)
+  :hook (go-ts-mode . eglot-ensure)
   :mode "\\.go\\'")
 
 ;;;; Erlang:
 
 (use-package erlang
   :ensure t
-  :hook (erlang-mode . lsp-deferred)
+  :hook (erlang-mode . eglot-ensure)
   :mode ("\\.erl\\'" . erlang-mode))
 
 ;;;; Elm:
 
 (use-package elm-mode
   :ensure t
-  :hook (elm-mode . lsp-deferred))
+  :hook (elm-mode . eglot-ensure))
 
 (provide 'init)
 ;;; init.el ends here
