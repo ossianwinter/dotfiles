@@ -221,22 +221,19 @@
   :custom (compilation-scroll-output t)
   :hook (compilation-filter . ansi-color-compilation-filter))
 
-(use-package vterm
+(use-package ghostel
   :ensure t
-  :preface
-  ;; https://mocompute.codeberg.page/item/2024/2024-09-03-emacs-project-vterm.html
-  (defun ossian/project-shell ()
-    (interactive)
-    (let* ((default-directory (project-root (project-current t)))
-           (default-project-shell-name (project-prefixed-buffer-name "shell"))
-           (shell-buffer (get-buffer default-project-shell-name)))
-      (if (and shell-buffer (not current-prefix-arg))
-          (if (comint-check-proc shell-buffer)
-              (pop-to-buffer shell-buffer (bound-and-true-p display-comint-buffer-action))
-            (vterm shell-buffer))
-        (vterm (generate-new-buffer-name default-project-shell-name)))))
-  :init (advice-add 'project-shell :override #'ossian/project-shell)
-  :bind ( :map vterm-mode-map ("M-s" . nil)))
+  :init (advice-add 'project-shell :override #'ghostel-project)
+  :bind ( :map ghostel-semi-char-mode-map (("C-s" . isearch-forward)
+                                           ("C-r" . isearch-backward)
+                                           ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+                                           ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl"))))))
+
+(use-package ghostel-compile
+  :init (ghostel-compile-global-mode +1))
+
+(use-package ghostel-comint
+  :init (ghostel-comint-global-mode +1))
 
 (use-package nov
   :ensure t
