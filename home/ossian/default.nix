@@ -12,6 +12,7 @@
     ./podman.nix
     ./sway.nix
     ./subversion.nix
+    ./sqitch.nix
   ];
 
   services = {
