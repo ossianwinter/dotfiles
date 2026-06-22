@@ -94,7 +94,6 @@
       jetbrains.idea
       oama
       code-cursor
-      bitwig-studio
       ares
       devenv
     ];
