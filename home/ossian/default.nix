@@ -94,7 +94,6 @@
       jetbrains.idea
       oama
       code-cursor
-      ares
       devenv
     ];
     stateVersion = "25.11";
