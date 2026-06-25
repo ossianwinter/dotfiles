@@ -60,6 +60,11 @@
       device = "/dev/disk/by-uuid/83f38485-57f5-4dca-a493-040c63f13022";
       fsType = "ext4";
     };
+
+    "/mnt/samsung-980" = {
+      device = "/dev/disk/by-uuid/138e7017-4a73-4b8b-bf2a-1903106ba323";
+      fsType = "ext4";
+    };
   };
 
   environment.pathsToLink = [
