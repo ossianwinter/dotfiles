@@ -27,6 +27,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-intel" ];
+    kernelParams = [ "i915.enable_dpcd_backlight=3" ];
 
     loader = {
       efi.canTouchEfiVariables = true;
