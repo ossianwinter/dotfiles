@@ -13,6 +13,7 @@
     ./sway.nix
     ./subversion.nix
     ./sqitch.nix
+    ./postgres.nix
   ];
 
   services = {
