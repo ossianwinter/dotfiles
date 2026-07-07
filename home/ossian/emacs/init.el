@@ -223,6 +223,7 @@
 
 (use-package ghostel
   :ensure t
+  :custom (ghostel-readonly-fast-exit nil)
   :init (advice-add 'project-shell :override #'ghostel-project)
   :bind ( :map ghostel-semi-char-mode-map (("C-s" . isearch-forward)
                                            ("C-r" . isearch-backward)
