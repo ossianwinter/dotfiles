@@ -24,7 +24,7 @@
       latitude = 57.7;
       longitude = 11.9;
       temperature = {
-        day = 5000;
+        day = 4000;
         night = 3500;
       };
     };
