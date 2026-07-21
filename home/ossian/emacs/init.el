@@ -367,5 +367,11 @@
   :ensure t
   :hook (elm-mode . eglot-ensure))
 
+;;;; Zig:
+
+(use-package zig-mode
+  :ensure t
+  :hook (zig-mode . eglot-ensure))
+
 (provide 'init)
 ;;; init.el ends here
