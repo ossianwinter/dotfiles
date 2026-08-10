@@ -49,15 +49,14 @@
       );
     in
     {
-      nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
         modules = [
-          ./nixos/systems/workstation
+          ./nixos/systems/pc
           ./nixos/users/ossian
           { users.users.ossian.extraGroups = [ "wheel" ]; }
 
           ./nixos/1password.nix
           ./nixos/audio.nix
-          ./nixos/steam.nix
 
           {
             nixpkgs.overlays = [

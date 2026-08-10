@@ -28,42 +28,25 @@
       systemd-boot.enable = true;
     };
 
-    initrd = {
-      kernelModules = [
-        "nvme"
-        "xhci_pci"
-      ];
-
-      luks.devices = {
-        "luks-6f885ba0-aeed-4d0b-af5d-63e993c5ba89".device =
-          "/dev/disk/by-uuid/6f885ba0-aeed-4d0b-af5d-63e993c5ba89";
-      };
-    };
+    initrd.kernelModules = [
+      "nvme"
+      "xhci_pci"
+    ];
   };
 
   fileSystems = {
     "/" = {
-      device = "/dev/mapper/luks-6f885ba0-aeed-4d0b-af5d-63e993c5ba89";
+      device = "/dev/disk/by-uuid/52e9dd2a-b047-4c2e-9a67-02a92308b32d";
       fsType = "ext4";
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/D6A3-FE76";
+      device = "/dev/disk/by-uuid/EF5B-6A04";
       fsType = "vfat";
       options = [
         "fmask=0077"
         "dmask=0077"
       ];
-    };
-
-    "/mnt/samsung-870" = {
-      device = "/dev/disk/by-uuid/83f38485-57f5-4dca-a493-040c63f13022";
-      fsType = "ext4";
-    };
-
-    "/mnt/samsung-980" = {
-      device = "/dev/disk/by-uuid/138e7017-4a73-4b8b-bf2a-1903106ba323";
-      fsType = "ext4";
     };
   };
 
@@ -75,7 +58,7 @@
   time.timeZone = "Europe/Stockholm";
 
   networking = {
-    hostName = "workstation";
+    hostName = "pc";
     domain = "home.winter.vg";
   };
 
