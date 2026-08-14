@@ -64,6 +64,11 @@
     };
   };
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 32 * 1024;
+  }];
+
   environment.pathsToLink = [
     "/share/applications"
     "/share/xdg-desktop-portal"
