@@ -5,7 +5,7 @@
     components = [ "secrets" ];
   };
 
-  home.packages = with pkgs; [ gcr ];
+  home.packages = with pkgs; [ gcr_4 ];
 
   xdg.portal = {
     enable = true;
