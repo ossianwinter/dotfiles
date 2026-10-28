@@ -14,6 +14,7 @@ etc/systemd/system/getty@tty1.service.d                           root   root   
 etc/systemd/system/getty@tty1.service.d/90-autologin.conf         root   root   -rw-rw-r--
 etc/X11                                                           root   root   drwxr-xr-x
 etc/X11/xorg.conf.d                                               root   root   drwxr-xr-x
+etc/X11/xorg.conf.d/80-amdgpu.conf                                root   root   -rw-r--r--
 etc/X11/xorg.conf.d/90-libinput.conf                              root   root   -rw-r--r--
 etc/X11/Xsession.options                                          root   root   -rw-r--r--
 
