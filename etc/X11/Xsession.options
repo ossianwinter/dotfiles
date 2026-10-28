@@ -1,0 +1,7 @@
+# $Id: Xsession.options 189 2005-06-11 00:04:27Z branden $
+
+allow-failsafe
+allow-user-resources
+allow-user-xsession
+no-use-ssh-agent
+use-session-dbus

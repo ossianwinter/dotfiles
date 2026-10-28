@@ -1,0 +1,34 @@
+# -*- mode: conf-space -*-
+
+# path                                                            owner  group  mode
+etc                                                               root   root   drwxr-xr-x
+etc/default                                                       root   root   drwxr-xr-x
+etc/default/grub.d                                                root   root   drwxr-xr-x
+etc/default/grub.d/apparmor.cfg                                   root   root   -rw-rw-r--
+etc/systemd                                                       root   root   drwxr-xr-x
+etc/systemd/network                                               root   root   drwxr-xr-x
+etc/systemd/network/10-lo.network                                 root   root   -rw-rw-r--
+etc/systemd/network/20-dhcp.network                               root   root   -rw-rw-r--
+etc/systemd/system                                                root   root   drwxr-xr-x
+etc/systemd/system/getty@tty1.service.d                           root   root   drwxr-xr-x
+etc/systemd/system/getty@tty1.service.d/90-autologin.conf         root   root   -rw-rw-r--
+etc/X11                                                           root   root   drwxr-xr-x
+etc/X11/xorg.conf.d                                               root   root   drwxr-xr-x
+etc/X11/xorg.conf.d/90-libinput.conf                              root   root   -rw-r--r--
+etc/X11/Xsession.options                                          root   root   -rw-r--r--
+
+home                                                              root   root   drwxr-xr-x
+home/ossian                                                       ossian ossian drwx------
+home/ossian/.bashrc                                               ossian ossian -rw-rw-r--
+home/ossian/.config                                               ossian ossian drwxrwxr-x
+home/ossian/.config/emacs                                         ossian ossian drwxrwxr-x
+home/ossian/.config/emacs/early-init.el                           ossian ossian -rw-rw-r--
+home/ossian/.config/emacs/init.el                                 ossian ossian -rw-rw-r--
+home/ossian/.config/i3                                            ossian ossian drwxrwxr-x
+home/ossian/.config/i3/config                                     ossian ossian -rw-rw-r--
+home/ossian/.config/wireplumber                                   ossian ossian drwxrwxr-x
+home/ossian/.config/wireplumber/wireplumber.conf.d                ossian ossian drwxrwxr-x
+home/ossian/.config/wireplumber/wireplumber.conf.d/99-master.conf ossian ossian -rw-rw-r--
+home/ossian/.gitconfig                                            ossian ossian -rw-rw-r--
+home/ossian/.profile                                              ossian ossian -rw-rw-r--
+home/ossian/.xsessionrc                                           ossian ossian -rw-rw-r--

@@ -1,0 +1,6 @@
+STARTUP=x-window-manager
+
+export EDITOR=emacsclient
+export VISUAL=emacsclient
+export XDG_CURRENT_DESKTOP=i3
+export XDG_SESSION_TYPE=x11
