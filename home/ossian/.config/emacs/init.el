@@ -54,6 +54,8 @@
 
 (setopt make-backup-files nil)
 
+(recentf-mode +1)
+
 ;;;; Server:
 
 (unless (bound-and-true-p server-process)
@@ -74,6 +76,8 @@
 
 (setopt enable-recursive-minibuffers t)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
+
+(savehist-mode +1)
 
 (vertico-mode +1)
 (marginalia-mode +1)
