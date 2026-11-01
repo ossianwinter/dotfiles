@@ -5,6 +5,7 @@ etc                                                               root   root   
 etc/default                                                       root   root   drwxr-xr-x
 etc/default/grub.d                                                root   root   drwxr-xr-x
 etc/default/grub.d/apparmor.cfg                                   root   root   -rw-rw-r--
+etc/default/grub.d/selinux.cfg                                    root   root   -rw-rw-r--
 etc/systemd                                                       root   root   drwxr-xr-x
 etc/systemd/network                                               root   root   drwxr-xr-x
 etc/systemd/network/10-lo.network                                 root   root   -rw-rw-r--
