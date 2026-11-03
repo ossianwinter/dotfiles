@@ -35,6 +35,7 @@
           envrc
           magit
           marginalia
+          orderless
           vertico
           vundo))
 
@@ -81,6 +82,12 @@
 
 (vertico-mode +1)
 (marginalia-mode +1)
+
+;; @Note: `completion-category-overrides' is prepended,
+;; i.e. `partial-completion' is tried, then `orderless'.
+(setopt completion-styles '(orderless basic))
+(setopt completion-category-defaults nil)
+(setopt completion-category-overrides '((file (styles partial-completion))))
 
 ;;;; Navigation:
 
