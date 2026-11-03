@@ -89,6 +89,13 @@
 (setopt completion-category-defaults nil)
 (setopt completion-category-overrides '((file (styles partial-completion))))
 
+(defun consult--orderless-regexp-compiler (input type ignore-case)
+  (setq input (cdr (orderless-compile input)))
+  (cons (mapcar (lambda (regexp) (consult--convert-regexp regexp type)) input)
+        (lambda (regexps) (orderless--highlight input t regexps))))
+
+(setopt consult--regexp-compiler #'consult--orderless-regexp-compiler)
+
 ;;;; Navigation:
 
 (setopt xref-show-xrefs-function #'consult-xref)
