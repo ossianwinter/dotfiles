@@ -30,6 +30,7 @@
 (setopt package-selected-packages
         '(consult
           corfu
+          eldoc-box
           embark
           embark-consult
           envrc
@@ -108,6 +109,8 @@
 
 (setopt tab-always-indent 'complete)    ; Indent or `completion-at-point'
 (global-corfu-mode +1)
+
+(add-hook 'eldoc-mode-hook #'eldoc-box-hover-at-point-mode)
 
 ;;;; Key bindings:
 
