@@ -33,6 +33,7 @@
           embark
           embark-consult
           envrc
+          gleam-ts-mode
           magit
           marginalia
           orderless
@@ -54,6 +55,8 @@
 ;;;; Files:
 
 (setopt make-backup-files nil)
+
+(add-to-list 'auto-mode-alist '("\\.gleam\\'" . gleam-ts-mode))
 
 (recentf-mode +1)
 
